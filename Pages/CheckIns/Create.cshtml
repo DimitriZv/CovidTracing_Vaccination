@@ -1,0 +1,54 @@
+﻿@page
+@model Project334.Pages.CheckIns.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>VisitorCheckIn</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VisitorCheckIn.MobilePhone" class="control-label"></label>
+                <input type="tel" asp-for="VisitorCheckIn.MobilePhone" placeholder="(0x) xxxx xxxx" class="form-control" />
+                <span asp-validation-for="VisitorCheckIn.MobilePhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitorCheckIn.LastName" class="control-label"></label>
+                <input asp-for="VisitorCheckIn.LastName" class="form-control" />
+                <span asp-validation-for="VisitorCheckIn.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitorCheckIn.FirstMidName" class="control-label"></label>
+                <input asp-for="VisitorCheckIn.FirstMidName" class="form-control" />
+                <span asp-validation-for="VisitorCheckIn.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitorCheckIn.Email" class="control-label"></label>
+                <input asp-for="VisitorCheckIn.Email" class="form-control" />
+                <span asp-validation-for="VisitorCheckIn.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitorCheckIn.CheckIn" class="control-label"></label>
+                <input asp-for="VisitorCheckIn.CheckIn" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm")" class="form-control" readonly="readonly" />
+                <span asp-validation-for="VisitorCheckIn.CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

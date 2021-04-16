@@ -1,0 +1,67 @@
+﻿@page
+@model Project334.Pages.DangerousCases.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DangerousCase</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DangerousCase.MobilePhone" class="control-label"></label>
+                <input asp-for="DangerousCase.MobilePhone" placeholder="(0x) xxxx xxxx" class="form-control" />
+                <span asp-validation-for="DangerousCase.MobilePhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DangerousCase.LastName" class="control-label"></label>
+                <input asp-for="DangerousCase.LastName" class="form-control" />
+                <span asp-validation-for="DangerousCase.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DangerousCase.FirstMidName" class="control-label"></label>
+                <input asp-for="DangerousCase.FirstMidName" class="form-control" />
+                <span asp-validation-for="DangerousCase.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DangerousCase.Email" class="control-label"></label>
+                <input asp-for="DangerousCase.Email" class="form-control" />
+                <span asp-validation-for="DangerousCase.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DangerousCase.Sex" class="control-label"></label>
+                <select asp-for="DangerousCase.Sex" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span asp-validation-for="DangerousCase.Sex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DangerousCase.ConfirmDate" class="control-label"></label>
+                <input type="date" asp-for="DangerousCase.ConfirmDate" placeholder="dd/mm/yyyy" class="form-control" />
+                <span asp-validation-for="DangerousCase.ConfirmDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DangerousCase.HasVaccine" /> @Html.DisplayNameFor(model => model.DangerousCase.HasVaccine)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

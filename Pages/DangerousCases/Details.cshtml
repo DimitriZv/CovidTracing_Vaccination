@@ -1,0 +1,61 @@
+﻿@page
+@model Project334.Pages.DangerousCases.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>DangerousCase</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DangerousCase.MobilePhone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DangerousCase.MobilePhone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DangerousCase.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DangerousCase.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DangerousCase.FirstMidName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DangerousCase.FirstMidName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DangerousCase.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DangerousCase.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DangerousCase.Sex)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DangerousCase.Sex)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DangerousCase.ConfirmDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DangerousCase.ConfirmDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DangerousCase.HasVaccine)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DangerousCase.HasVaccine)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.DangerousCase.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
