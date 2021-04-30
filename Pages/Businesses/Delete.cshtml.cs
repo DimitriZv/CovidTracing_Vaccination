@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.BusinessActivities
+namespace Project334.Pages.Businesses
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace Project334.Pages.BusinessActivities
         }
 
         [BindProperty]
-        public BusinessActivity BusinessActivity { get; set; }
+        public Business Business { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace Project334.Pages.BusinessActivities
                 return NotFound();
             }
 
-            BusinessActivity = await _context.BusinessActivities.FirstOrDefaultAsync(m => m.BusinessActivityID == id);
+            Business = await _context.Businesses.FirstOrDefaultAsync(m => m.BusinessID == id);
 
-            if (BusinessActivity == null)
+            if (Business == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace Project334.Pages.BusinessActivities
                 return NotFound();
             }
 
-            BusinessActivity = await _context.BusinessActivities.FindAsync(id);
+            Business = await _context.Businesses.FindAsync(id);
 
-            if (BusinessActivity != null)
+            if (Business != null)
             {
-                _context.BusinessActivities.Remove(BusinessActivity);
+                _context.Businesses.Remove(Business);
                 await _context.SaveChangesAsync();
             }
 

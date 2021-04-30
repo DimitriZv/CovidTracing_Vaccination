@@ -17,6 +17,11 @@ namespace Project334.Models
         public override string FirstMidName { get; set; }
         public override string Email { get; set; }
 
+        [Display(Name = "Business Activity ID")]
+        [Required(ErrorMessage = "Business Activity ID is required")]
+        [Range(1, 10000)]
+        public int BusinessActivityID { get; set; }
+
         [Display(Name = "CheckOut Date Time:")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]

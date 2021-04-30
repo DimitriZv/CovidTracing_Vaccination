@@ -7,7 +7,13 @@ namespace Project334.Models
 {
     public class BusinessActivity
     {
-        public int ID { get; set; }
+        [Key]
+        public int BusinessActivityID { get; set; }
+
+        [Display(Name = "Business ID")]
+        [Required(ErrorMessage = "Business ID is required")]
+        [Range(1, 10000)]
+        public int BusinessID { get; set; }
 
         [Required(ErrorMessage = "The Working Date is required")]
         [DataType(DataType.Date)]
@@ -15,7 +21,7 @@ namespace Project334.Models
         [Display(Name = "Working Date")]
         public DateTime WorkingDate { get; set; }
         
-        public ICollection<VisitorCheckIn> VisitorCheckIn { get; set; }
-        public ICollection<VisitorCheckOut> VisitorCheckOut { get; set; }
+        public virtual ICollection<VisitorCheckIn> VisitorCheckIn { get; set; }
+        public virtual ICollection<VisitorCheckOut> VisitorCheckOut { get; set; }
     }
 }

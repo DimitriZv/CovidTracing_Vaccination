@@ -1,5 +1,5 @@
 ﻿@page
-@model Project334.Pages.CheckOuts.CreateModel
+@model Project334.Pages.CheckOuts.CreateModelNew
 
 @{
     ViewData["Title"] = "Create";
@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="VisitorCheckOut.BusinessActivityID" class="control-label"></label>
-                <input asp-for="VisitorCheckOut.BusinessActivityID" class="form-control" />
+                <input asp-for="VisitorCheckOut.BusinessActivityID" value="@ViewContext.HttpContext.Request.Query["id"]" class="form-control" readonly="readonly" />
                 <span asp-validation-for="VisitorCheckOut.BusinessActivityID" class="text-danger"></span>
             </div>
             <div class="form-group">

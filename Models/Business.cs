@@ -8,10 +8,17 @@ namespace Project334.Models
 {
     public class Business
     {
-        public int ID { get; set; }
+        [Key]
+        public int BusinessID { get; set; }
 
         [Required(ErrorMessage = "The Address is required")]
+        [Display(Name = "Company Address")]
         public Address CompanyAddress { get; set; }
+
+        [Display(Name = "Company number")]
+        [Required(ErrorMessage = "The Company numbe is required")]
+        [StringLength(30)]
+        public string Name { get; set; }
 
         [Display(Name = "Phone number")]
         [Required(ErrorMessage = "The Phone number is required")]
@@ -19,10 +26,12 @@ namespace Project334.Models
         public string Phone { get; set; }
         
         [Required(ErrorMessage = "The ABN is required")]
-        [RegularExpression("([0-9]+)", ErrorMessage = "11 numbers from 1 to 9")] // for numbers that need to start with a zero
         [StringLength(11, ErrorMessage = "ABN cannot be longer than 11 numbers")]
-        public int ABN { get; set; }
+        //[Range(10000000000, 99999999999, ErrorMessage = "11 digits from 1 to 9")]
+        //[RegularExpression(@"([0-9]+)", ErrorMessage = "11 digits from 0 to 9")]
+        [RegularExpression(@"[0-9]*\.?[0-9]+", ErrorMessage = "11 digits from 0 to 9")]
+        public string ABN { get; set; }
 
-        ICollection<BusinessActivity> DailyActivities { get; set; }
+        public virtual ICollection<BusinessActivity> DailyActivities { get; set; }
     }
 }

@@ -17,9 +17,63 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.BusinessActivity.WorkingDate)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BusinessActivity.VisitorCheckIn)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Mobile</th>
+                    <th>CheckIn</th>
+                </tr>
+                @foreach (var item in Model.BusinessActivity.VisitorCheckIn)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MobilePhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CheckIn)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BusinessActivity.VisitorCheckOut)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Mobile</th>
+                    <th>CheckOut</th>
+                </tr>
+                @foreach (var item in Model.BusinessActivity.VisitorCheckOut)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MobilePhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CheckOut)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.BusinessActivity.ID">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.BusinessActivity.BusinessActivityID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

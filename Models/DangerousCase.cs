@@ -19,7 +19,7 @@ namespace Project334.Models
         public override string Email { get; set; }
 
         [Required(ErrorMessage = "The Sex is required")]
-        [Display(Name = "Sex")]
+        [Display(Name = "Gender")]
         public Sex Sex { get; set; }
 
         [Display(Name = "Confirm Virus Date:")]

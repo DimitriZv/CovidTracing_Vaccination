@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.BusinessActivities
+namespace Project334.Pages.Businesses
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace Project334.Pages.BusinessActivities
             _context = context;
         }
 
-        public BusinessActivity BusinessActivity { get; set; }
+        public Business Business { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,15 +28,15 @@ namespace Project334.Pages.BusinessActivities
                 return NotFound();
             }
 
-            //BusinessActivity = await _context.BusinessActivities.FirstOrDefaultAsync(m => m.ID == id);
-            BusinessActivity = await _context.BusinessActivities
-                .Include(s => s.VisitorCheckIn)
-                .Include(e => e.VisitorCheckOut)
+            //Business = await _context.Businesses.FirstOrDefaultAsync(m => m.ID == id);
+            Business = await _context.Businesses
+                .Include(s => s.CompanyAddress)
+                .Include(e => e.DailyActivities)
+                //.ThenInclude(d => d.VisitorCheckIn)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.BusinessActivityID == id);
+                .FirstOrDefaultAsync(m => m.BusinessID == id);
 
-
-            if (BusinessActivity == null)
+            if (Business == null)
             {
                 return NotFound();
             }

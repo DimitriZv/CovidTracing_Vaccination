@@ -1,5 +1,5 @@
 ﻿@page
-@model Project334.Pages.CheckIns.CreateModel
+@model Project334.Pages.CheckIns.CreateModelNew
 
 @{
     ViewData["Title"] = "Create";
@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="VisitorCheckIn.BusinessActivityID" class="control-label"></label>
-                <input asp-for="VisitorCheckIn.BusinessActivityID" class="form-control" />
+                <input asp-for="VisitorCheckIn.BusinessActivityID" value="@ViewContext.HttpContext.Request.Query["id"]" class="form-control" readonly="readonly" />
                 <span asp-validation-for="VisitorCheckIn.BusinessActivityID" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.BusinessActivities
+namespace Project334.Pages.Businesses
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace Project334.Pages.BusinessActivities
         }
 
         [BindProperty]
-        public BusinessActivity BusinessActivity { get; set; }
+        public Business Business { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace Project334.Pages.BusinessActivities
                 return NotFound();
             }
 
-            BusinessActivity = await _context.BusinessActivities.FirstOrDefaultAsync(m => m.BusinessActivityID == id);
+            Business = await _context.Businesses.FirstOrDefaultAsync(m => m.BusinessID == id);
 
-            if (BusinessActivity == null)
+            if (Business == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace Project334.Pages.BusinessActivities
                 return Page();
             }
 
-            _context.Attach(BusinessActivity).State = EntityState.Modified;
+            _context.Attach(Business).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace Project334.Pages.BusinessActivities
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BusinessActivityExists(BusinessActivity.BusinessActivityID))
+                if (!BusinessExists(Business.BusinessID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace Project334.Pages.BusinessActivities
             return RedirectToPage("./Index");
         }
 
-        private bool BusinessActivityExists(int id)
+        private bool BusinessExists(int id)
         {
-            return _context.BusinessActivities.Any(e => e.BusinessActivityID == id);
+            return _context.Businesses.Any(e => e.BusinessID == id);
         }
     }
 }

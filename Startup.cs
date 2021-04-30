@@ -25,6 +25,9 @@ namespace Project334
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            int MyMaxModelBindingCollectionSize = Convert.ToInt32(
+                Configuration["MyMaxModelBindingCollectionSize"] ?? "100");
+
             services.AddRazorPages();
 
             services.AddDbContext<Project334Context>(options =>

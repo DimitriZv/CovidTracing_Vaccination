@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.BusinessActivities
+namespace Project334.Pages.Businesses
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Project334.Pages.BusinessActivities
         }
 
         [BindProperty]
-        public BusinessActivity BusinessActivity { get; set; }
+        public Business Business { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -33,18 +33,9 @@ namespace Project334.Pages.BusinessActivities
             if (!ModelState.IsValid)
             {
                 return Page();
-
-            }
-            
-            var courseToUpdate = await _context.BusinessActivities.FindAsync(BusinessActivity.BusinessID);
-
-            if (courseToUpdate != null && courseToUpdate.WorkingDate == BusinessActivity.WorkingDate)
-            {
-                ModelState.AddModelError("BusinessActivity", "Cannot be the same date to the same bussiness");
-                return Page();
             }
 
-            _context.BusinessActivities.Add(BusinessActivity);
+            _context.Businesses.Add(Business);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
