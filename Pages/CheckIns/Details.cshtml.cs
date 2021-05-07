@@ -28,7 +28,9 @@ namespace Project334.Pages.CheckIns
                 return NotFound();
             }
 
-            VisitorCheckIn = await _context.VisitorsCheckIn.FirstOrDefaultAsync(m => m.ID == id);
+            VisitorCheckIn = await _context.VisitorsCheckIn
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (VisitorCheckIn == null)
             {

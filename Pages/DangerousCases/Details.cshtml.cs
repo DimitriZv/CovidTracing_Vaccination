@@ -28,7 +28,10 @@ namespace Project334.Pages.DangerousCases
                 return NotFound();
             }
 
-            DangerousCase = await _context.DangerousCases.FirstOrDefaultAsync(m => m.ID == id);
+            DangerousCase = await _context.DangerousCases
+                .Include(s => s.VisitedPlaces)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (DangerousCase == null)
             {

@@ -7,7 +7,10 @@ namespace Project334.Models
 {
     public class Address
     {
+        [Key]
         public int ID { get; set; }
+
+        public int PersonID { get; set; }
 
         [Required(ErrorMessage = "The Street number is required")]
         [StringLength(5)]

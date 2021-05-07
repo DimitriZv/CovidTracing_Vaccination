@@ -50,9 +50,53 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DangerousCase.HasVaccine)
         </dt>
+            @if (Model.DangerousCase.HasVaccine == true)
+            {
+                <dd class="col-sm-10">Yes</dd>
+            }
+            @if (Model.DangerousCase.HasVaccine == false)
+            {
+                <dd class="col-sm-10">No</dd>
+            }
+        <dt class="col-sm-10">
+            <a asp-page="/Addresses/CreateNew" asp-route-Id="@Model.DangerousCase.ID">Add Address</a>
+        </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DangerousCase.HasVaccine)
+            <table class="table">
+                <tr>
+                    <th>Street Number</th>
+                    <th>Street Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                    <th>Country</th>
+                </tr>
+                @foreach (var item in Model.DangerousCase.VisitedPlaces)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StreetNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StreetName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ZipCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                    </tr>
+                }
+            </table>
         </dd>
+
     </dl>
 </div>
 <div>

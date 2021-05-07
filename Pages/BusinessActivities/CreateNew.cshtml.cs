@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.CheckOuts
+namespace Project334.Pages.BusinessActivities
 {
     public class CreateModelNew : PageModel
     {
@@ -25,7 +25,7 @@ namespace Project334.Pages.CheckOuts
         }
 
         [BindProperty]
-        public VisitorCheckOut VisitorCheckOut { get; set; }
+        public BusinessActivity BusinessActivity { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -33,13 +33,21 @@ namespace Project334.Pages.CheckOuts
             if (!ModelState.IsValid)
             {
                 return Page();
+
+            }
+            
+            var courseToUpdate = await _context.BusinessActivities.FindAsync(BusinessActivity.BusinessID);
+
+            if (courseToUpdate != null && courseToUpdate.WorkingDate == BusinessActivity.WorkingDate)
+            {
+                ModelState.AddModelError("BusinessActivity", "Cannot be the same date to the same bussiness");
+                return Page();
             }
 
-            _context.VisitorsCheckOut.Add(VisitorCheckOut);
+            _context.BusinessActivities.Add(BusinessActivity);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Businesses/Index");
-            //return RedirectToPage("./Index");
+            return RedirectToPage("./Index");
         }
     }
 }

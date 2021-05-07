@@ -28,7 +28,9 @@ namespace Project334.Pages.CheckOuts
                 return NotFound();
             }
 
-            VisitorCheckOut = await _context.VisitorsCheckOut.FirstOrDefaultAsync(m => m.ID == id);
+            VisitorCheckOut = await _context.VisitorsCheckOut
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (VisitorCheckOut == null)
             {

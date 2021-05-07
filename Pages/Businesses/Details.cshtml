@@ -68,11 +68,13 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Business.CompanyAddress.Country)
         </dd>
-                <dd><hr/></dd>
+        <dd><hr /></dd>
+
         <dd class="col-sm-10">
             <table class="table">
                 <tr>
                     <th>Working Date</th>
+                    <th><a asp-page="/BusinessActivities/CreateNew" asp-route-Id="@Model.Business.BusinessID">Add new Working Day</a></th>
                 </tr>
                 @foreach (var item in Model.Business.DailyActivities)
                 {

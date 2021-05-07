@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.CheckOuts
+namespace Project334.Pages.Addresses
 {
     public class CreateModelNew : PageModel
     {
@@ -25,7 +25,7 @@ namespace Project334.Pages.CheckOuts
         }
 
         [BindProperty]
-        public VisitorCheckOut VisitorCheckOut { get; set; }
+        public Address Address { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,11 +35,10 @@ namespace Project334.Pages.CheckOuts
                 return Page();
             }
 
-            _context.VisitorsCheckOut.Add(VisitorCheckOut);
+            _context.Addresses.Add(Address);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Businesses/Index");
-            //return RedirectToPage("./Index");
+            return RedirectToPage("./Index");
         }
     }
 }

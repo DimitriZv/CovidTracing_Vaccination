@@ -60,11 +60,11 @@
             </td>
                 @if (item.HasVaccine == true)
                 {
-                    <td>Has vaccine</td>
+                    <td>Yes</td>
                 }
                 @if (item.HasVaccine == false)
                 {
-                    <td>No vaccine</td>
+                    <td>No</td>
                 }
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

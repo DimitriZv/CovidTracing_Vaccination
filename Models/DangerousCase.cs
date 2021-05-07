@@ -31,6 +31,6 @@ namespace Project334.Models
         [Display(Name = "Has vaccine?")]
         public bool HasVaccine { get; set; }
 
-        public ICollection<Address> VisitedPlaces { get; set; }
+        public virtual ICollection<Address> VisitedPlaces { get; set; }
     }
 }
