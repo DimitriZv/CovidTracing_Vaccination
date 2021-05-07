@@ -5,10 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project334.Models
 {
-    /*public enum SexVisitorCheckOut
-    {
-        Male, Female
-    }*/
     public class VisitorCheckOut : Person
     {
         public override int ID { get; set; }

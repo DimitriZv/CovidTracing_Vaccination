@@ -15,20 +15,20 @@ namespace Project334.Models
         [Required(ErrorMessage = "The Street number is required")]
         [StringLength(5)]
         [Display(Name = "Street Number")]
-        public String StreetNumber { get; set; }
+        public string StreetNumber { get; set; }
 
         [Required(ErrorMessage = "The Street name is required")]
         [StringLength(50)]
         [Display(Name = "Street Name")]
-        public String StreetName { get; set; }
+        public string StreetName { get; set; }
 
         [Required(ErrorMessage = "The City address is required")]
         [StringLength(30)]
-        public String City { get; set; }
+        public string City { get; set; }
 
         [Required(ErrorMessage = "The State address is required")]
         [StringLength(30)]
-        public String State { get; set; }
+        public string State { get; set; }
 
         [Required(ErrorMessage = "Zip Code is required")]
         [RegularExpression("([0-9]+)", ErrorMessage = "4 numbers from 0 to 9")]

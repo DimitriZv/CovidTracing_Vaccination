@@ -6,11 +6,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project334.Models
 {
-    /*public enum SexVisitorCheckIn
-    {
-        Male, Female
-    }*/
-
     public class VisitorCheckIn : Person
     {
         public override int ID { get; set; }

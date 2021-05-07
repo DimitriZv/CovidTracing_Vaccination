@@ -1,0 +1,60 @@
+﻿@page
+@model Project334.Pages.Patients.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Patient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Patient.MobilePhone" class="control-label"></label>
+                <input asp-for="Patient.MobilePhone" class="form-control" />
+                <span asp-validation-for="Patient.MobilePhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.LastName" class="control-label"></label>
+                <input asp-for="Patient.LastName" class="form-control" />
+                <span asp-validation-for="Patient.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.FirstMidName" class="control-label"></label>
+                <input asp-for="Patient.FirstMidName" class="form-control" />
+                <span asp-validation-for="Patient.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.Email" class="control-label"></label>
+                <input asp-for="Patient.Email" class="form-control" />
+                <span asp-validation-for="Patient.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Patient.HadVirus" /> @Html.DisplayNameFor(model => model.Patient.HadVirus)
+                </label>
+            </div>
+            <div><a href="https://www.health.gov.au/resources/apps-and-tools/covid-19-vaccine-eligibility-checker">Check Eligibility to vaccination</a></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Patient.EligibilityToVaccine" /> @Html.DisplayNameFor(model => model.Patient.EligibilityToVaccine)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,91 @@
+﻿@page
+@model Project334.Pages.Appointments.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Appointment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Appointment.Patient.MobilePhone" class="control-label"></label>
+                <input type="tel" asp-for="Appointment.Patient.MobilePhone" placeholder="(0x) xxxx xxxx" class="form-control" />
+                <span asp-validation-for="Appointment.Patient.MobilePhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.Patient.LastName" class="control-label"></label>
+                <input asp-for="Appointment.Patient.LastName" class="form-control" />
+                <span asp-validation-for="Appointment.Patient.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.Patient.FirstMidName" class="control-label"></label>
+                <input asp-for="Appointment.Patient.FirstMidName" class="form-control" />
+                <span asp-validation-for="Appointment.Patient.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.Patient.Email" class="control-label"></label>
+                <input asp-for="Appointment.Patient.Email" class="form-control" />
+                <span asp-validation-for="Appointment.Patient.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Appointment.Patient.HadVirus" /> @Html.DisplayNameFor(model => model.Appointment.Patient.HadVirus)
+                </label>
+            </div>
+            <div><b><a href="https://www.health.gov.au/resources/apps-and-tools/covid-19-vaccine-eligibility-checker">Check Eligibility to vaccination</a></b></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Appointment.Patient.EligibilityToVaccine" /> @Html.DisplayNameFor(model => model.Appointment.Patient.EligibilityToVaccine)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Appointment.AppointmentDate" class="control-label"></label>
+                <input type="datetime" asp-for="Appointment.AppointmentDate" placeholder="dd/MM/yyyy HH:mm" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm")" class="form-control" />
+                <span asp-validation-for="Appointment.AppointmentDate" class="text-danger"></span>
+            </div>
+            <div><b>Checkbox has to be verifie by medical staff ONLY</b></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Appointment.EligibilityToVaccine" /> @Html.DisplayNameFor(model => model.Appointment.EligibilityToVaccine)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Appointment.Vaccine.Name" class="control-label"></label>
+                <input asp-for="Appointment.Vaccine.Name" class="form-control" />
+                <span asp-validation-for="Appointment.Vaccine.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.Vaccine.Number" class="control-label"></label>
+                <input asp-for="Appointment.Vaccine.Number" class="form-control" />
+                <span asp-validation-for="Appointment.Vaccine.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.Vaccine.ProductionDate" class="control-label"></label>
+                <input asp-for="Appointment.Vaccine.ProductionDate" class="form-control" />
+                <span asp-validation-for="Appointment.Vaccine.ProductionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <div><b>@Html.ValidationMessageFor(m => m.Appointment.Patient.HadVirus)</b></div>
+                <div><b>@Html.ValidationMessageFor(m => m.Appointment.Patient.EligibilityToVaccine)</b></div>
+                <div><b>@Html.ValidationMessageFor(m => m.Appointment.EligibilityToVaccine)</b></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
