@@ -10,7 +10,7 @@ namespace Project334.Models
         [Key]
         public int ID { get; set; }
 
-        public int PersonID { get; set; }
+        public int DangerousCaseID { get; set; }
 
         [Required(ErrorMessage = "The Street number is required")]
         [StringLength(5)]

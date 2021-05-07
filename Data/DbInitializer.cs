@@ -11,14 +11,22 @@ namespace Project334.Data
         public static void Initialize(Project334Context context)
         {
             // Look for any VisitorsCheckIn or VisitorsCheckOut activity.
-            if (context.VisitorsCheckIn.Any() || context.VisitorsCheckOut.Any())
+            if (context.VisitorsCheckIn.Any() || context.VisitorsCheckOut.Any() || context.DangerousCases.Any())
             {
                 return;   // DB has been seeded
             }
 
+            var dangerousCases = new DangerousCase[]
+            {
+                new DangerousCase{MobilePhone="0492111118",FirstMidName="Nino",LastName="Olivetto",Email="no@no.no",Sex=Sex.Male,ConfirmDate=DateTime.Parse("10/04/2021 2:55:00 AM"),HasVaccine=true},
+                new DangerousCase{MobilePhone="0492111119",FirstMidName="Latino",LastName="Ciusino",Email="nobo@nobo.nobo",Sex=Sex.Female,ConfirmDate=DateTime.Parse("22/04/2021 10:55:00 PM"),HasVaccine=false}
+            };
+            context.DangerousCases.AddRange(dangerousCases);
+            context.SaveChanges();
+
             var addresses = new Address[]
             {
-                new Address{StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode="2000"},
+                new Address{StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode="2000"}, //business 1 address
                 new Address{StreetNumber="2",StreetName="Street2",City="Melbourne",State="VIC",ZipCode="3000"},
                 new Address{StreetNumber="3",StreetName="Street3",City="Brisbane",State="QLD",ZipCode="4000"}
             };
