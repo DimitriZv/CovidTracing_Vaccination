@@ -28,7 +28,6 @@ namespace Project334.Pages.BookAppointments
                 return NotFound();
             }
 
-            //BookAppointment = await _context.BookAppointments.FirstOrDefaultAsync(m => m.BookAppointmentID == id);
             BookAppointment = await _context.BookAppointments
                 .Include(s => s.Patient)
                 .AsNoTracking()

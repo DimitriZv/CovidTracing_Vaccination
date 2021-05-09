@@ -28,7 +28,6 @@ namespace Project334.Pages.Businesses
                 return NotFound();
             }
 
-            //Business = await _context.Businesses.FirstOrDefaultAsync(m => m.ID == id);
             Business = await _context.Businesses
                 .Include(s => s.CompanyAddress)
                 .Include(e => e.DailyActivities)

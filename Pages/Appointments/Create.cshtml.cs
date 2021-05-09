@@ -28,33 +28,32 @@ namespace Project334.Pages.Appointments
         [BindProperty]
         public Appointment Appointment { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            
-            /*if(Appointment.Patient.HadVirus == true || Appointment.Patient.EligibilityToVaccine == false)
+
+            if(Appointment.BookAppointment.Patient.HadVirus == true || Appointment.BookAppointment.EligibilityToVaccine == false)
             {
-                if (Appointment.Patient.HadVirus == true) {
-                    ModelState.AddModelError("Appointment.Patient.HadVirus", "Not eligible to vaccination, because of the previous infection");
+                if (Appointment.BookAppointment.Patient.HadVirus == true) {
+                    ModelState.AddModelError("Appointment.BookAppointment.Patient.HadVirus", "Not eligible to vaccination, because of the previous infection");
                     return Page();
                 }
-                else if(Appointment.Patient.EligibilityToVaccine == false)
+                else if(Appointment.BookAppointment.EligibilityToVaccine == false)
                 {
-                    ModelState.AddModelError("Appointment.Patient.EligibilityToVaccine", "Not eligible to vaccination, based on the link provided");
+                    ModelState.AddModelError("Appointment.BookAppointment.EligibilityToVaccine", "Not eligible to vaccination, based on the link provided");
                     return Page();
-                }          
+                }  
             }
+
             if (Appointment.EligibilityToVaccine == false)
             {
-                ModelState.AddModelError("Appointment.EligibilityToVaccine", "Not eligible to vaccination by medical staff");
+                ModelState.AddModelError("Appointment.EligibilityToVaccine", "Not eligible to vaccination by medical staff decision");
                 return Page();
-            }*/
+            }
             
-
             _context.Appointments.Add(Appointment);
             await _context.SaveChangesAsync();
 

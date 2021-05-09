@@ -23,8 +23,6 @@ namespace Project334.Pages.Appointments
 
         public async Task OnGetAsync()
         {
-            //Appointment = await _context.Appointments.ToListAsync();
-
             Appointment = await _context.Appointments
                 .Include(f => f.BookAppointment)
                 .AsNoTracking()

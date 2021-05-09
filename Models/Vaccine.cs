@@ -12,6 +12,8 @@ namespace Project334.Models
         [Key]
         public int VaccineID { get; set; }
 
+        public int PatientID { get; set; }
+
         [Required(ErrorMessage = "The Vaccine name is required")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Vaccine Name cannot be longer than 30 characters")]
         [RegularExpression("^[a-zA-Z]+(?:s+[a-zA-Z]+)*$", ErrorMessage = "Vaccine Name is not valid")]

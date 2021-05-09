@@ -27,7 +27,6 @@ namespace Project334.Pages.BusinessActivities
         [BindProperty]
         public BusinessActivity BusinessActivity { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

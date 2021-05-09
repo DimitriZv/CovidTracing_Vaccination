@@ -22,9 +22,10 @@ namespace Project334.Models
 
         [Display(Name = "Phone number")]
         [Required(ErrorMessage = "The Phone number is required")]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number is ten digits")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
-        
+
         [Required(ErrorMessage = "The ABN is required")]
         [StringLength(11, ErrorMessage = "ABN cannot be longer than 11 numbers")]
         //[Range(10000000000, 99999999999, ErrorMessage = "11 digits from 1 to 9")]

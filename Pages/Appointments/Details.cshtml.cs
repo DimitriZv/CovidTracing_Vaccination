@@ -27,11 +27,11 @@ namespace Project334.Pages.Appointments
             {
                 return NotFound();
             }
-
-            //Appointment = await _context.Appointments.FirstOrDefaultAsync(m => m.AppointmentID == id);
+            
             Appointment = await _context.Appointments
+                .Include(v => v.Vaccine)
                 .Include(f => f.BookAppointment)
-                .Include(k => k.BookAppointment.Patient)
+                    .ThenInclude(k => k.Patient)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.AppointmentID == id);
 

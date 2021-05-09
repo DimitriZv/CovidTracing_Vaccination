@@ -35,21 +35,15 @@ namespace Project334.Pages.MedicalInstitutions
                 //.OrderBy(i => i.MedicalInstitutionID)
                 .ToListAsync();
             
-            //MedicalInstitution = await _context.MedicalInstitution.FirstOrDefaultAsync(m => m.MedicalInstitutionID == id);
             MedicalInstitution = await _context.MedicalInstitutions
                 .Include(h => h.MedicalAddress)
                 .Include(s => s.Appointment)
-                .ThenInclude(f => f.BookAppointment)
+                    .ThenInclude(f => f.BookAppointment)
+                    .ThenInclude(b => b.Patient)
+                .Include(s => s.Appointment)
+                    .ThenInclude(v => v.Vaccine)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.MedicalInstitutionID == id);
-
-            /*MedicalIndexData = new MedicalIndexData();
-            MedicalIndexData.MedicalInstitutions = await _context.MedicalInstitutions
-                .Include(d => d.MedicalAddress)
-                .Include(i => i.Appointment)
-                    .ThenInclude(h => h.BookAppointment)
-                .OrderBy(g => g.Name)
-                .ToListAsync();*/
 
             if (MedicalInstitution == null)
             {

@@ -35,7 +35,7 @@ namespace Project334.Data
 
             var businesses = new Business[]
             {
-                new Business{CompanyAddress=addresses[1],Name="Big Boss",Phone="88888888888", ABN="12345678999"}
+                new Business{CompanyAddress=addresses[1],Name="Big Boss",Phone="8765588888", ABN="12345678999"}
             };
             context.Businesses.AddRange(businesses);
             context.SaveChanges();

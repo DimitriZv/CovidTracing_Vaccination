@@ -28,7 +28,6 @@ namespace Project334.Pages.BusinessActivities
                 return NotFound();
             }
 
-            //BusinessActivity = await _context.BusinessActivities.FirstOrDefaultAsync(m => m.ID == id);
             BusinessActivity = await _context.BusinessActivities
                 .Include(s => s.VisitorCheckIn)
                 .Include(e => e.VisitorCheckOut)

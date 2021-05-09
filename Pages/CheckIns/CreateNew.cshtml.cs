@@ -22,18 +22,8 @@ namespace Project334.Pages.CheckIns
         [BindProperty]
         public VisitorCheckIn VisitorCheckIn { get; set; }
 
-        //public IActionResult OnGet(/*int id*/)
         public IActionResult OnGet()
         {
-            //int activityId = id;
-
-            //VisitorCheckIn = await _context.VisitorsCheckIn.FirstOrDefaultAsync(m => m.ID == id);
-
-            /*VisitorCheckIn.BusinessActivityID = (int)id;
-            if (VisitorCheckIn == null)
-            {
-                return NotFound();
-            }*/
             return Page();
         }
 
@@ -46,8 +36,7 @@ namespace Project334.Pages.CheckIns
 
             _context.VisitorsCheckIn.Add(VisitorCheckIn);
             await _context.SaveChangesAsync();
-
-            //return RedirectToPage("./Businesses/Details", new { id = VisitorCheckIn.BusinessActivityID });
+            
             return RedirectToPage("/Businesses/Index");
         }
     }

@@ -23,7 +23,6 @@ namespace Project334.Pages.BookAppointments
 
         public async Task OnGetAsync()
         {
-            //BookAppointment = await _context.BookAppointments.ToListAsync();
             BookAppointment = await _context.BookAppointments
                 .Include(s => s.Patient)
                 .ToListAsync();
