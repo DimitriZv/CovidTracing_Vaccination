@@ -12,13 +12,19 @@ namespace Project334.Models
         [Key]
         public int AppointmentID { get; set; }
 
+        public int MedicalInstitutionID { get; set; }
+
+        public int BookAppointmentID { get; set; }
+
+        public virtual BookAppointment BookAppointment { get; set; }
+
         [Required(ErrorMessage = "The Appointment Date is required")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]
         [Display(Name = "Appointment Date")]
         public DateTime AppointmentDate { get; set; }
 
-        public Patient Patient { get; set; }
+        //public Patient Patient { get; set; }
 
         public Vaccine Vaccine { get; set; }
 
@@ -32,10 +38,10 @@ namespace Project334.Models
             }
             set
             {
-                if (Patient.HadVirus == true)
+                if (BookAppointment.Patient.HadVirus == true)
                 {
                     this.EligibilityToVaccine = false;
-                } else if (Patient.EligibilityToVaccine == true)
+                } else if (BookAppointment.EligibilityToVaccine == true && BookAppointment.Patient.HadVirus == false)
                 {
                     this.EligibilityToVaccine = true;
                 }

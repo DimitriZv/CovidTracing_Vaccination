@@ -40,6 +40,15 @@ namespace Project334.Models
         public string Country { get; set; } = "Australia";
         /*public String Country
         { set { Country = "Australia"; } }*/
+
+        [Display(Name = "Address")]
+        public string FullAddress
+        {
+            get
+            {
+                return StreetNumber + " " + StreetName + " " + City + " " + State;
+            }
+        }
     }
 }
 

@@ -15,8 +15,8 @@ namespace Project334.Models
         [Display(Name = "Company Address")]
         public Address CompanyAddress { get; set; }
 
-        [Display(Name = "Company number")]
-        [Required(ErrorMessage = "The Company numbe is required")]
+        [Display(Name = "Company name")]
+        [Required(ErrorMessage = "The Company name is required")]
         [StringLength(30)]
         public string Name { get; set; }
 

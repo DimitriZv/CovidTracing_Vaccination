@@ -10,47 +10,59 @@
 <h4>Appointment</h4>
 <hr />
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <hr />
+            <div><b>Details have to be verified by medical staff ONLY</b></div>
             <div class="form-group">
-                <label asp-for="Appointment.Patient.MobilePhone" class="control-label"></label>
-                <input type="tel" asp-for="Appointment.Patient.MobilePhone" placeholder="(0x) xxxx xxxx" class="form-control" />
-                <span asp-validation-for="Appointment.Patient.MobilePhone" class="text-danger"></span>
+                <label asp-for="Appointment.MedicalInstitutionID" class="control-label"></label>
+                <input asp-for="Appointment.MedicalInstitutionID" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Appointment.MedicalInstitutionID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Appointment.Patient.LastName" class="control-label"></label>
-                <input asp-for="Appointment.Patient.LastName" class="form-control" />
-                <span asp-validation-for="Appointment.Patient.LastName" class="text-danger"></span>
+                <label asp-for="Appointment.BookAppointmentID" class="control-label"></label>
+                <input asp-for="Appointment.BookAppointmentID" value="@ViewContext.HttpContext.Request.Query["id"]" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Appointment.BookAppointmentID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Appointment.Patient.FirstMidName" class="control-label"></label>
-                <input asp-for="Appointment.Patient.FirstMidName" class="form-control" />
-                <span asp-validation-for="Appointment.Patient.FirstMidName" class="text-danger"></span>
+                <label asp-for="Appointment.BookAppointment.Patient.MobilePhone" class="control-label"></label>
+                <input type="tel" asp-for="Appointment.BookAppointment.Patient.MobilePhone" value="@ViewContext.HttpContext.Request.Query["mobilephone"]" placeholder="(0x) xxxx xxxx" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Appointment.BookAppointment.Patient.MobilePhone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Appointment.Patient.Email" class="control-label"></label>
-                <input asp-for="Appointment.Patient.Email" class="form-control" />
-                <span asp-validation-for="Appointment.Patient.Email" class="text-danger"></span>
+                <label asp-for="Appointment.BookAppointment.Patient.LastName" class="control-label"></label>
+                <input asp-for="Appointment.BookAppointment.Patient.LastName" value="@ViewContext.HttpContext.Request.Query["lastname"]" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Appointment.BookAppointment.Patient.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.BookAppointment.Patient.FirstMidName" class="control-label"></label>
+                <input asp-for="Appointment.BookAppointment.Patient.FirstMidName" value="@ViewContext.HttpContext.Request.Query["firstname"]" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Appointment.BookAppointment.Patient.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appointment.BookAppointment.Patient.Email" class="control-label"></label>
+                <input asp-for="Appointment.BookAppointment.Patient.Email" value="@ViewContext.HttpContext.Request.Query["email"]" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Appointment.BookAppointment.Patient.Email" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Appointment.Patient.HadVirus" /> @Html.DisplayNameFor(model => model.Appointment.Patient.HadVirus)
+                    <input class="form-check-input" asp-for="Appointment.BookAppointment.Patient.HadVirus" value="@ViewContext.HttpContext.Request.Query["hadvirus"]" disabled /> @Html.DisplayNameFor(model => model.Appointment.BookAppointment.Patient.HadVirus)
                 </label>
             </div>
-            <div><b><a href="https://www.health.gov.au/resources/apps-and-tools/covid-19-vaccine-eligibility-checker">Check Eligibility to vaccination</a></b></div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Appointment.Patient.EligibilityToVaccine" /> @Html.DisplayNameFor(model => model.Appointment.Patient.EligibilityToVaccine)
-                </label>
+            <div class="form-group">
+                <label asp-for="Appointment.BookAppointment.Medicare" class="control-label"></label>
+                <input asp-for="Appointment.BookAppointment.Medicare" value="@ViewContext.HttpContext.Request.Query["medicare"]" class="form-control" readonly="readonly" />
+                <span asp-validation-for="Appointment.BookAppointment.Patient.Email" class="text-danger"></span>
             </div>
 
+            <hr />
             <div class="form-group">
                 <label asp-for="Appointment.AppointmentDate" class="control-label"></label>
-                <input type="datetime" asp-for="Appointment.AppointmentDate" placeholder="dd/MM/yyyy HH:mm" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm")" class="form-control" />
+                <input type="datetime" asp-for="Appointment.AppointmentDate" placeholder="dd/MM/yyyy HH:mm" class="form-control" />
                 <span asp-validation-for="Appointment.AppointmentDate" class="text-danger"></span>
             </div>
-            <div><b>Checkbox has to be verifie by medical staff ONLY</b></div>
+            <div><b><a href="https://www.health.gov.au/resources/apps-and-tools/covid-19-vaccine-eligibility-checker">Check Eligibility to vaccination</a></b></div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Appointment.EligibilityToVaccine" /> @Html.DisplayNameFor(model => model.Appointment.EligibilityToVaccine)
@@ -74,9 +86,9 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
-                <div><b>@Html.ValidationMessageFor(m => m.Appointment.Patient.HadVirus)</b></div>
-                <div><b>@Html.ValidationMessageFor(m => m.Appointment.Patient.EligibilityToVaccine)</b></div>
+                <div><b>@Html.ValidationMessageFor(m => m.Appointment.BookAppointment.Patient.HadVirus)</b></div>
                 <div><b>@Html.ValidationMessageFor(m => m.Appointment.EligibilityToVaccine)</b></div>
+                <div><b>@Html.ValidationMessageFor(m => m.Appointment.BookAppointment.Patient.ID)</b></div>
             </div>
         </form>
     </div>

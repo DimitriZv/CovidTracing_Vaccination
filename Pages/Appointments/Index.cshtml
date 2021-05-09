@@ -19,6 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Appointment[0].EligibilityToVaccine)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].BookAppointment.Medicare)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -30,6 +33,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EligibilityToVaccine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookAppointment.Medicare)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.AppointmentID">Edit</a> |

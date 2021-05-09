@@ -28,9 +28,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Patient[0].HadVirus)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient[0].EligibilityToVaccine)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -51,9 +48,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HadVirus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EligibilityToVaccine)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

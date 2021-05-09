@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.Appointments
+namespace Project334.Pages.BookAppointments
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace Project334.Pages.Appointments
             _context = context;
         }
 
-        public Appointment Appointment { get; set; }
+        public BookAppointment BookAppointment { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +28,13 @@ namespace Project334.Pages.Appointments
                 return NotFound();
             }
 
-            //Appointment = await _context.Appointments.FirstOrDefaultAsync(m => m.AppointmentID == id);
-            Appointment = await _context.Appointments
-                .Include(f => f.BookAppointment)
-                .Include(k => k.BookAppointment.Patient)
+            //BookAppointment = await _context.BookAppointments.FirstOrDefaultAsync(m => m.BookAppointmentID == id);
+            BookAppointment = await _context.BookAppointments
+                .Include(s => s.Patient)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.AppointmentID == id);
+                .FirstOrDefaultAsync(m => m.BookAppointmentID == id);
 
-            if (Appointment == null)
+            if (BookAppointment == null)
             {
                 return NotFound();
             }

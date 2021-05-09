@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.Appointments
+namespace Project334.Pages.MedicalInstitutions
 {
     public class IndexModel : PageModel
     {
@@ -19,14 +19,13 @@ namespace Project334.Pages.Appointments
             _context = context;
         }
 
-        public IList<Appointment> Appointment { get;set; }
+        public IList<MedicalInstitution> MedicalInstitution { get;set; }
 
         public async Task OnGetAsync()
         {
-            //Appointment = await _context.Appointments.ToListAsync();
-
-            Appointment = await _context.Appointments
-                .Include(f => f.BookAppointment)
+            //MedicalInstitution = await _context.MedicalInstitutions.ToListAsync();
+            MedicalInstitution = await _context.MedicalInstitutions
+                .Include(s => s.MedicalAddress)
                 .AsNoTracking()
                 .ToListAsync();
         }

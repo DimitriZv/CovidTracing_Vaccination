@@ -14,14 +14,14 @@ namespace Project334.Models
         public override string LastName { get; set; }
         public override string FirstMidName { get; set; }
         public override string Email { get; set; }
-        
+
         [Required(ErrorMessage = "The HadVirus is required")]
         [Display(Name = "Had virus?")]
-        public bool HadVirus { get; set; }
+        public bool HadVirus { get; set; } = false;
 
-        [Required(ErrorMessage = "The Eligibility to Vaccination is required")]
+        /*[Required(ErrorMessage = "The Eligibility to Vaccination is required")]
         [Display(Name = "Eligible To Vaccination?")]
-        public bool EligibilityToVaccine { get; set; }
+        public bool EligibilityToVaccine { get; set; }*/
 
         public virtual ICollection<Vaccine> Vaccines { get; set; }
     }

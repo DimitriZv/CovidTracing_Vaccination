@@ -1,0 +1,48 @@
+﻿@page
+@model Project334.Pages.BookAppointments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAppointment[0].Patient.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAppointment[0].EligibilityToVaccine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAppointment[0].Medicare)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BookAppointment) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.Patient.FullName)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.EligibilityToVaccine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicare)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.BookAppointmentID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.BookAppointmentID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.BookAppointmentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

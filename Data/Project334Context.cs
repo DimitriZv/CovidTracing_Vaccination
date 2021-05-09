@@ -24,9 +24,13 @@ namespace Project334.Data
         public DbSet<Vaccine> Vaccines { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<BookAppointment> BookAppointments { get; set; }
+        public DbSet<MedicalInstitution> MedicalInstitutions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<MedicalInstitution>().ToTable("MedicalInstitution");
+            modelBuilder.Entity<BookAppointment>().ToTable("BookAppointment");
             modelBuilder.Entity<Appointment>().ToTable("Appointment");
             modelBuilder.Entity<Patient>().ToTable("Patient");
             modelBuilder.Entity<Vaccine>().ToTable("Vaccine");
