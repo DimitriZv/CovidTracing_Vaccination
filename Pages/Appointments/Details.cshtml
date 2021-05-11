@@ -111,6 +111,6 @@
     <hr />
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Appointment.AppointmentID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Appointment.AppointmentID" onclick="return false;">Edit</a> |
+    <a asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.Appointment.MedicalInstitutionID">Back to Medical Place</a>
 </div>

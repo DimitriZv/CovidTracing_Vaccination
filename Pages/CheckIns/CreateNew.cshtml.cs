@@ -36,8 +36,8 @@ namespace Project334.Pages.CheckIns
 
             _context.VisitorsCheckIn.Add(VisitorCheckIn);
             await _context.SaveChangesAsync();
-            
-            return RedirectToPage("/Businesses/Index");
+
+            return RedirectToPage("/BusinessActivities/Details", new { id = VisitorCheckIn.BusinessActivityID });
         }
     }
 }

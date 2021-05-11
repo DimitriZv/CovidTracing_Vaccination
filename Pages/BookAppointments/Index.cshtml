@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.BookAppointment[0].Patient.FullName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.BookAppointment[0].Patient.MobilePhone)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.BookAppointment[0].EligibilityToVaccine)
             </th>
             <th>
@@ -30,6 +33,9 @@
         <tr>
             <th>
                 @Html.DisplayFor(modelItem => item.Patient.FullName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Patient.MobilePhone)
             </th>
             <td>
                 @Html.DisplayFor(modelItem => item.EligibilityToVaccine)

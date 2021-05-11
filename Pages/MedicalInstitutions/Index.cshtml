@@ -38,7 +38,7 @@
                 @Html.DisplayFor(modelItem => item.MedicalAddress.FullAddress)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.MedicalInstitutionID">Edit</a> |
+                <a asp-page="./Edit" asp-route-id="@item.MedicalInstitutionID" onclick="return false;">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.MedicalInstitutionID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.MedicalInstitutionID">Delete</a>
             </td>

@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Dangerous Cases</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -16,14 +16,20 @@
             <th>
                 @Html.DisplayNameFor(model => model.DangerousCase[0].MobilePhone)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.DangerousCase[0].LastName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DangerousCase[0].FirstMidName)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DangerousCase[0].FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DangerousCase[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DangerousCase[0].DOB)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DangerousCase[0].Sex)
@@ -43,14 +49,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MobilePhone)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sex)
@@ -58,14 +70,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ConfirmDate)
             </td>
-                @if (item.HasVaccine == true)
-                {
-                    <td>Yes</td>
-                }
-                @if (item.HasVaccine == false)
-                {
-                    <td>No</td>
-                }
+            @if (item.HasVaccine == true)
+            {
+                <td>Yes</td>
+            }
+            @if (item.HasVaccine == false)
+            {
+                <td>No</td>
+            }
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |

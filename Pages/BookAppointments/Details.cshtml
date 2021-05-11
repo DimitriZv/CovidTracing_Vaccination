@@ -47,6 +47,12 @@
             @Html.DisplayFor(model => model.BookAppointment.Patient.Email)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BookAppointment.Patient.DOB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BookAppointment.Patient.DOB)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BookAppointment.EligibilityToVaccine)
         </dt>
             @if (Model.BookAppointment.EligibilityToVaccine == true)
@@ -76,13 +82,14 @@
            asp-route-hadvirus="@Model.BookAppointment.Patient.HadVirus"
            asp-route-medicare="@Model.BookAppointment.Medicare"
            asp-route-eligibility="@Model.BookAppointment.EligibilityToVaccine"
-           asp-route-patientid="@Model.BookAppointment.Patient.ID">
+           asp-route-patientid="@Model.BookAppointment.Patient.ID"
+           asp-route-patientdob="@Model.BookAppointment.Patient.DOB">
         
         Create an Appointment</a>
     </b>
 </div>
     <hr />
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.BookAppointment.BookAppointmentID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.BookAppointment.BookAppointmentID" onclick="return false;">Edit</a> |
+        <a asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.BookAppointment.MedicalInstitutionID">Back to Medical Place</a>
+    </div>

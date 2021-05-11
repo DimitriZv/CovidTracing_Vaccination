@@ -7,7 +7,7 @@
 
 <h1>Create</h1>
 
-<h4>VisitorCheckOut</h4>
+<h4>Visitor Check Out</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -51,7 +51,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="/BusinessActivities/Details" asp-route-id="@ViewContext.HttpContext.Request.Query["id"]">Back to daily activity</a>
 </div>
 
 @section Scripts {

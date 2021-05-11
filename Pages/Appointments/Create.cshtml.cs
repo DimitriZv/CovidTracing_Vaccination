@@ -57,7 +57,7 @@ namespace Project334.Pages.Appointments
             _context.Appointments.Add(Appointment);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/MedicalInstitutions/Details", new { id = Appointment.MedicalInstitutionID });
         }
     }
 }
