@@ -30,7 +30,7 @@ namespace Project334.Pages.Businesses
                 return NotFound();
             }
 
-            Business = await _context.Businesses.FirstOrDefaultAsync(m => m.BusinessID == id);
+            Business = await _context.Businesses.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Business == null)
             {
@@ -54,7 +54,7 @@ namespace Project334.Pages.Businesses
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BusinessExists(Business.BusinessID))
+                if (!BusinessExists(Business.ID))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace Project334.Pages.Businesses
 
         private bool BusinessExists(int id)
         {
-            return _context.Businesses.Any(e => e.BusinessID == id);
+            return _context.Businesses.Any(e => e.ID == id);
         }
     }
 }

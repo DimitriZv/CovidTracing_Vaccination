@@ -26,9 +26,11 @@ namespace Project334.Data
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<BookAppointment> BookAppointments { get; set; }
         public DbSet<MedicalInstitution> MedicalInstitutions { get; set; }
+        public DbSet<AddressDate> AddressDates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AddressDate>().ToTable("AddressDate");
             modelBuilder.Entity<MedicalInstitution>().ToTable("MedicalInstitution");
             modelBuilder.Entity<BookAppointment>().ToTable("BookAppointment");
             modelBuilder.Entity<Appointment>().ToTable("Appointment");

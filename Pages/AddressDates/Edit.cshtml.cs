@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.Addresses
+namespace Project334.Pages.AddressDates
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace Project334.Pages.Addresses
         }
 
         [BindProperty]
-        public Address Address { get; set; }
+        public AddressDate AddressDate { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace Project334.Pages.Addresses
                 return NotFound();
             }
 
-            Address = await _context.Addresses.FirstOrDefaultAsync(m => m.ID == id);
+            AddressDate = await _context.AddressDates.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Address == null)
+            if (AddressDate == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace Project334.Pages.Addresses
                 return Page();
             }
 
-            _context.Attach(Address).State = EntityState.Modified;
+            _context.Attach(AddressDate).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace Project334.Pages.Addresses
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AddressExists(Address.ID))
+                if (!AddressDateExists(AddressDate.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace Project334.Pages.Addresses
             return RedirectToPage("./Index");
         }
 
-        private bool AddressExists(int id)
+        private bool AddressDateExists(int id)
         {
-            return _context.Addresses.Any(e => e.ID == id);
+            return _context.AddressDates.Any(e => e.ID == id);
         }
     }
 }

@@ -64,7 +64,8 @@ namespace Project334.Pages.BookAppointments
                 }
             }
 
-            return RedirectToPage("./Index");
+            //return RedirectToPage("./Index");
+            return RedirectToPage("/MedicalInstitutions/Details", new { id = BookAppointment.MedicalInstitutionID });
         }
 
         private bool BookAppointmentExists(int id)

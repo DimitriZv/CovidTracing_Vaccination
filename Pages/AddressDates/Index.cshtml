@@ -1,8 +1,9 @@
 ﻿@page
-@model Project334.Pages.Addresses.IndexModel
+@model Project334.Pages.AddressDates.IndexModel
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <h1>Index</h1>
@@ -14,25 +15,31 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].StreetNumber)
+                @Html.DisplayNameFor(model => model.AddressDate[0].StreetNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].StreetName)
+                @Html.DisplayNameFor(model => model.AddressDate[0].StreetName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].City)
+                @Html.DisplayNameFor(model => model.AddressDate[0].City)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].State)
+                @Html.DisplayNameFor(model => model.AddressDate[0].State)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].ZipCode)
+                @Html.DisplayNameFor(model => model.AddressDate[0].ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressDate[0].Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressDate[0].DateOfVisit)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Address) {
+@foreach (var item in Model.AddressDate) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.StreetNumber)
@@ -48,6 +55,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfVisit)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

@@ -37,7 +37,7 @@ namespace Project334.Pages.BookAppointments
             _context.BookAppointments.Add(BookAppointment);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/MedicalInstitutions/Details", new { id = BookAppointment.MedicalInstitutionID });
         }
     }
 }

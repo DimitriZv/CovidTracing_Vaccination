@@ -1,0 +1,62 @@
+﻿@page
+@model Project334.Pages.AddressDates.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AddressDate</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDate.StreetNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDate.StreetNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDate.StreetName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDate.StreetName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDate.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDate.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDate.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDate.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDate.ZipCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDate.ZipCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDate.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDate.Country)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDate.DateOfVisit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDate.DateOfVisit)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.AddressDate.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

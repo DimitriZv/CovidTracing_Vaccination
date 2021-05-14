@@ -46,7 +46,8 @@ namespace Project334.Pages.BusinessActivities
             _context.BusinessActivities.Add(BusinessActivity);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            //return RedirectToPage("./Index");
+            return RedirectToPage("/Businesses/Details", new { id = BusinessActivity.BusinessID });
         }
     }
 }

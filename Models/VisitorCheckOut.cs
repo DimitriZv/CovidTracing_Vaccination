@@ -18,7 +18,7 @@ namespace Project334.Models
         [Range(1, 10000)]
         public int BusinessActivityID { get; set; }
 
-        [Display(Name = "CheckOut Date Time:")]
+        [Display(Name = "CheckOut Date Time")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]
         public DateTime CheckOut { get; set; }

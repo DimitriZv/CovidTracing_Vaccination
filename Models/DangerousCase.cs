@@ -18,11 +18,17 @@ namespace Project334.Models
         public override string FirstMidName { get; set; }
         public override string Email { get; set; }
 
+        [Display(Name = "Date of Birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]
+        public DateTime DOB { get; set; }
+
         [Required(ErrorMessage = "The Sex is required")]
         [Display(Name = "Gender")]
         public Sex Sex { get; set; }
 
-        [Display(Name = "Confirm Virus Date:")]
+
+        [Display(Name = "Confirm Virus Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]
         public DateTime ConfirmDate { get; set; }
@@ -31,6 +37,6 @@ namespace Project334.Models
         [Display(Name = "Has vaccine?")]
         public bool HasVaccine { get; set; }
 
-        public virtual ICollection<Address> VisitedPlaces { get; set; }
+        public virtual ICollection<AddressDate> VisitedPlaces { get; set; }
     }
 }

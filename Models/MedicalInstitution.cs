@@ -7,14 +7,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project334.Models
 {
-    public class MedicalInstitution
+    public class MedicalInstitution : Address
     {
-        [Key]
-        public int MedicalInstitutionID { get; set; }
+        /*[Key]
+        public int MedicalInstitutionID { get; set; }*/
+        public override int ID { get; set; }
+        public override string StreetNumber { get; set; }
+        public override string StreetName { get; set; }
+        public override string City { get; set; }
+        public override string State { get; set; }
+        public override string ZipCode { get; set; }
+        public override string Country { get; set; } = "Australia";
 
-        [Required(ErrorMessage = "The Address is required")]
+        /*[Required(ErrorMessage = "The Address is required")]
         [Display(Name = "Medical Address")]
-        public Address MedicalAddress { get; set; }
+        public Address MedicalAddress { get; set; }*/
 
         [Display(Name = "Medical name")]
         [Required(ErrorMessage = "The Company name is required")]

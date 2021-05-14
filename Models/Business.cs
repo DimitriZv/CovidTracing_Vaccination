@@ -6,14 +6,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project334.Models
 {
-    public class Business
+    public class Business : Address
     {
-        [Key]
-        public int BusinessID { get; set; }
+        /*[Key]
+        public int BusinessID { get; set; }*/
 
-        [Required(ErrorMessage = "The Address is required")]
+        public override int ID { get; set; }
+        public override string StreetNumber { get; set; }
+        public override string StreetName { get; set; }
+        public override string City { get; set; }
+        public override string State { get; set; }
+        public override string ZipCode { get; set; }
+        public override string Country { get; set; } = "Australia";
+
+        /*[Required(ErrorMessage = "The Address is required")]
         [Display(Name = "Company Address")]
-        public Address CompanyAddress { get; set; }
+        public Address CompanyAddress { get; set; }*/
 
         [Display(Name = "Company name")]
         [Required(ErrorMessage = "The Company name is required")]

@@ -26,8 +26,7 @@ namespace Project334.Pages.Addresses
 
         [BindProperty]
         public Address Address { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -38,7 +37,8 @@ namespace Project334.Pages.Addresses
             _context.Addresses.Add(Address);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            //return RedirectToPage("./Index");
+            return RedirectToPage("/DangerousCases/Details", new { id = Address.DangerousCaseID} );
         }
     }
 }

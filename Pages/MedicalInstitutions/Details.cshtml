@@ -5,10 +5,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Model.MedicalInstitution.Name</h1>
 
 <div>
-    <h4>Medical Institution</h4>
+    <h4>Information and Activities</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -27,39 +27,39 @@
 
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.MedicalAddress.StreetNumber)
+            @Html.DisplayNameFor(model => model.MedicalInstitution.StreetNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.MedicalAddress.StreetNumber)
+            @Html.DisplayFor(model => model.MedicalInstitution.StreetNumber)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.MedicalAddress.StreetName)
+            @Html.DisplayNameFor(model => model.MedicalInstitution.StreetName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.MedicalAddress.StreetName)
+            @Html.DisplayFor(model => model.MedicalInstitution.StreetName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.MedicalAddress.City)
+            @Html.DisplayNameFor(model => model.MedicalInstitution.City)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.MedicalAddress.City)
+            @Html.DisplayFor(model => model.MedicalInstitution.City)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.MedicalAddress.State)
+            @Html.DisplayNameFor(model => model.MedicalInstitution.State)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.MedicalAddress.State)
+            @Html.DisplayFor(model => model.MedicalInstitution.State)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.MedicalAddress.ZipCode)
+            @Html.DisplayNameFor(model => model.MedicalInstitution.ZipCode)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.MedicalAddress.ZipCode)
+            @Html.DisplayFor(model => model.MedicalInstitution.ZipCode)
         </dd>
     </dl>
 
     <div>
-        <b><a asp-page="/BookAppointments/Create" asp-route-Id="@Model.MedicalInstitution.MedicalInstitutionID">Book an appointment</a></b>
+        <b><a asp-page="/BookAppointments/Create" asp-route-Id="@Model.MedicalInstitution.ID">Book an appointment</a></b>
     </div>
     <hr />
 
@@ -142,6 +142,6 @@
     <hr />
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.MedicalInstitution.MedicalInstitutionID">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.MedicalInstitution.ID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

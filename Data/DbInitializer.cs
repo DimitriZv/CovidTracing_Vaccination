@@ -18,24 +18,24 @@ namespace Project334.Data
 
             var dangerousCases = new DangerousCase[]
             {
-                new DangerousCase{MobilePhone="0492111118",FirstMidName="Nino",LastName="Olivetto",Email="no@no.no",Sex=Sex.Male,ConfirmDate=DateTime.Parse("10/04/2021 2:55:00 AM"),HasVaccine=true},
-                new DangerousCase{MobilePhone="0492111119",FirstMidName="Latino",LastName="Ciusino",Email="nobo@nobo.nobo",Sex=Sex.Female,ConfirmDate=DateTime.Parse("22/04/2021 10:55:00 PM"),HasVaccine=false}
+                new DangerousCase{MobilePhone="0492111118",FirstMidName="Nino",LastName="Olivetto",Email="no@no.no",Sex=Sex.Male,ConfirmDate=DateTime.Parse("10/04/2021 2:55:00 AM"),HasVaccine=true, DOB=DateTime.Parse("10/04/2000 2:55:00 AM")},
+                new DangerousCase{MobilePhone="0492111119",FirstMidName="Latino",LastName="Ciusino",Email="nobo@nobo.nobo",Sex=Sex.Female,ConfirmDate=DateTime.Parse("22/04/2021 10:55:00 PM"),HasVaccine=false, DOB=DateTime.Parse("10/04/1990 2:55:00 AM")}
             };
             context.DangerousCases.AddRange(dangerousCases);
             context.SaveChanges();
 
-            var addresses = new Address[]
+            /*var addresses = new Address[]
             {
                 new Address{StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode="2000"}, //business 1 address
                 new Address{StreetNumber="2",StreetName="Street2",City="Melbourne",State="VIC",ZipCode="3000"},
                 new Address{StreetNumber="3",StreetName="Street3",City="Brisbane",State="QLD",ZipCode="4000"}
             };
             context.Addresses.AddRange(addresses);
-            context.SaveChanges();
+            context.SaveChanges();*/
 
             var businesses = new Business[]
             {
-                new Business{CompanyAddress=addresses[1],Name="Big Boss",Phone="8765588888", ABN="12345678999"}
+                new Business{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode="2000",Name="Big Boss",Phone="8765588888", ABN="12345678999"}
             };
             context.Businesses.AddRange(businesses);
             context.SaveChanges();

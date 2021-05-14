@@ -29,11 +29,11 @@ namespace Project334.Pages.Businesses
             }
 
             Business = await _context.Businesses
-                .Include(s => s.CompanyAddress)
+                //.Include(s => s.CompanyAddress)
                 .Include(e => e.DailyActivities)
                 //.ThenInclude(d => d.VisitorCheckIn)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.BusinessID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Business == null)
             {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.Addresses
+namespace Project334.Pages.AddressDates
 {
     public class CreateModel : PageModel
     {
@@ -25,9 +25,8 @@ namespace Project334.Pages.Addresses
         }
 
         [BindProperty]
-        public Address Address { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public AddressDate AddressDate { get; set; }
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -35,10 +34,11 @@ namespace Project334.Pages.Addresses
                 return Page();
             }
 
-            _context.Addresses.Add(Address);
+            _context.AddressDates.Add(AddressDate);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            //return RedirectToPage("./Index");
+            return RedirectToPage("/DangerousCases/Details", new { id = AddressDate.DangerousCaseID });
         }
     }
 }

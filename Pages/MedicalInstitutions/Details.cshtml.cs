@@ -36,14 +36,14 @@ namespace Project334.Pages.MedicalInstitutions
                 .ToListAsync();
             
             MedicalInstitution = await _context.MedicalInstitutions
-                .Include(h => h.MedicalAddress)
+                //.Include(h => h.MedicalAddress)
                 .Include(s => s.Appointment)
                     .ThenInclude(f => f.BookAppointment)
                     .ThenInclude(b => b.Patient)
                 .Include(s => s.Appointment)
                     .ThenInclude(v => v.Vaccine)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.MedicalInstitutionID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (MedicalInstitution == null)
             {

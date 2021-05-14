@@ -19,7 +19,7 @@ namespace Project334.Models
         [Range(1,10000)]
         public int BusinessActivityID { get; set; }
 
-        [Display(Name = "CheckIn Date Time:")]
+        [Display(Name = "CheckIn Date Time")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]
         public DateTime CheckIn { get; set; }

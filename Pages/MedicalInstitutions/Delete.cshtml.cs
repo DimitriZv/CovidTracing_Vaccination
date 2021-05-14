@@ -29,7 +29,7 @@ namespace Project334.Pages.MedicalInstitutions
                 return NotFound();
             }
 
-            MedicalInstitution = await _context.MedicalInstitutions.FirstOrDefaultAsync(m => m.MedicalInstitutionID == id);
+            MedicalInstitution = await _context.MedicalInstitutions.FirstOrDefaultAsync(m => m.ID == id);
 
             if (MedicalInstitution == null)
             {

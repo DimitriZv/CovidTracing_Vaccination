@@ -30,7 +30,7 @@ namespace Project334.Pages.MedicalInstitutions
                 return NotFound();
             }
 
-            MedicalInstitution = await _context.MedicalInstitutions.FirstOrDefaultAsync(m => m.MedicalInstitutionID == id);
+            MedicalInstitution = await _context.MedicalInstitutions.FirstOrDefaultAsync(m => m.ID == id);
 
             if (MedicalInstitution == null)
             {
@@ -54,7 +54,7 @@ namespace Project334.Pages.MedicalInstitutions
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MedicalInstitutionExists(MedicalInstitution.MedicalInstitutionID))
+                if (!MedicalInstitutionExists(MedicalInstitution.ID))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace Project334.Pages.MedicalInstitutions
 
         private bool MedicalInstitutionExists(int id)
         {
-            return _context.MedicalInstitutions.Any(e => e.MedicalInstitutionID == id);
+            return _context.MedicalInstitutions.Any(e => e.ID == id);
         }
     }
 }

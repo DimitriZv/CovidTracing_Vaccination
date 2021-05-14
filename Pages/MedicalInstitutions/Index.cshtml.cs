@@ -24,7 +24,7 @@ namespace Project334.Pages.MedicalInstitutions
         public async Task OnGetAsync()
         {
             MedicalInstitution = await _context.MedicalInstitutions
-                .Include(s => s.MedicalAddress)
+                //.Include(s => s.MedicalAddress)
                 .AsNoTracking()
                 .ToListAsync();
         }

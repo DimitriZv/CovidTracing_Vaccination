@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Microsoft.AspNetCore.Identity;
+using Project334.Areas.Identity.Data;
 
 namespace Project334
 {
@@ -29,13 +30,40 @@ namespace Project334
             int MyMaxModelBindingCollectionSize = Convert.ToInt32(
                 Configuration["MyMaxModelBindingCollectionSize"] ?? "100");
 
+            
+            services.Configure<CookiePolicyOptions>(options =>
+            {//added for users
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+            });
 
-                services.AddControllersWithViews();//added for users
 
-            services.AddRazorPages();
+            services.AddControllersWithViews();//added for users
+
+            //services.AddRazorPages();
 
             services.AddDbContext<Project334Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Project334Context")));
+            /*services.AddDbContext<Project334Context>(options =>
+            options.UseSqlServer(
+                Configuration.GetConnectionString("Project334Context")));
+            services.AddDefaultIdentity<IdentityUser>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<Project334IdentityDbContext>();*/
+
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy("RequireAdministratorRole",
+                    policy => policy.RequireRole("Administrator"));
+                config.AddPolicy("RequireMemberRole",
+                    policy => policy.RequireRole("Member"));
+            });
+            
+            /////
+
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -74,15 +102,22 @@ namespace Project334
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
             }); //added for users
+
+
+            services.AddRazorPages()
+            //.AddNewtonsoftJson()
+            .AddRazorPagesOptions(options => {
+                options.Conventions.AuthorizePage("/Privacy", "RequireAdministratorRole");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider, UserManager<Project334Users> userManager)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                    app.UseDatabaseErrorPage();//added for users
+                    //app.UseDatabaseErrorPage();//added for users
             }
             else
             {
@@ -106,6 +141,72 @@ namespace Project334
                     pattern: "{controller=Home}/{action=Index}/{id?}");*/
                 endpoints.MapRazorPages();
             });
+
+            CreateDatabase(app);
+            CreateRolesAsync(serviceProvider).Wait();
+            CreateSuperUser(userManager).Wait();
+        }
+        private async Task CreateSuperUser(UserManager<Project334Users> userManager)
+        {
+            var userFind = await userManager.FindByEmailAsync("admin@ad.ad");
+            if (userFind == null)
+            {
+                var user = new Project334Users
+                {
+                    UserName = "admin@ad.ad",
+                    Email = "admin@ad.ad"
+                };
+                string govPassword = "Soarer471!";
+                var createPowerUser = await userManager.CreateAsync(user, govPassword);
+                if (createPowerUser.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "Admin"); //here we tie the new user to the role
+                }
+            }
+        }
+        /*private async Task CreateSuperUser(UserManager<Project334Users> userManager)
+        {
+            var userFind = await userManager.FindByEmailAsync("gov@gov.au");
+            if (userFind == null)
+            {
+                var user = new Project334Users
+                {
+                    UserName = "gov@gov.au",
+                    Email = "gov@gov.au"
+                };
+                string govPassword = "Soarer471!";
+                var createPowerUser = await userManager.CreateAsync(user, govPassword);
+                if (createPowerUser.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "Government"); //here we tie the new user to the role
+                }
+            }
+        }*/
+
+        private void CreateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<Project334IdentityDbContext>();
+                context.Database.EnsureCreated();
+            }
+        }
+        private async Task CreateRolesAsync(IServiceProvider serviceProvider)
+        {
+            //adding custom roles
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            string[] roleNames = { "Admin","Government", "Bussiness", "Medical", "Patient" };
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                //creating the roles and seeding them to the database
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
         }
     }
 }

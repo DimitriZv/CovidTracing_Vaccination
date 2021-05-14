@@ -21,6 +21,7 @@ namespace Project334.Areas.Identity
                         context.Configuration.GetConnectionString("Project334IdentityDbContextConnection")));
 
                 services.AddDefaultIdentity<Project334Users>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<Project334IdentityDbContext>();
             });
         }

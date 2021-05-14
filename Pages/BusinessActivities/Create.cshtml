@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="BusinessActivity.WorkingDate" class="control-label"></label>
-                <input asp-for="BusinessActivity.WorkingDate" class="form-control" />
+                <input type="datetime" asp-for="BusinessActivity.WorkingDate" placeholder="dd/MM/yyyy" class="form-control" />
                 <span asp-validation-for="BusinessActivity.WorkingDate" class="text-danger"></span>
                 @Html.ValidationMessageFor(m => m.BusinessActivity)
             </div>

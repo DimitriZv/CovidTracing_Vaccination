@@ -5,10 +5,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Model.Business.Name</h1>
 
 <div>
-    <h4>Business</h4>
+    <h4>Company Information and Activities</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -33,40 +33,40 @@
         <dd class="col-sm-12"><hr /></dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.CompanyAddress.StreetNumber)
+            @Html.DisplayNameFor(model => model.Business.StreetNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.CompanyAddress.StreetNumber)
+            @Html.DisplayFor(model => model.Business.StreetNumber)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.CompanyAddress.StreetName)
+            @Html.DisplayNameFor(model => model.Business.StreetName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.CompanyAddress.StreetName)
+            @Html.DisplayFor(model => model.Business.StreetName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.CompanyAddress.City)
+            @Html.DisplayNameFor(model => model.Business.City)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.CompanyAddress.City)
+            @Html.DisplayFor(model => model.Business.City)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.CompanyAddress.State)
+            @Html.DisplayNameFor(model => model.Business.State)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.CompanyAddress.State)
+            @Html.DisplayFor(model => model.Business.State)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.CompanyAddress.ZipCode)
+            @Html.DisplayNameFor(model => model.Business.ZipCode)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.CompanyAddress.ZipCode)
+            @Html.DisplayFor(model => model.Business.ZipCode)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.CompanyAddress.Country)
+            @Html.DisplayNameFor(model => model.Business.Country)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.CompanyAddress.Country)
+            @Html.DisplayFor(model => model.Business.Country)
         </dd>
         <dd><hr /></dd>
 
@@ -74,7 +74,7 @@
             <table class="table">
                 <tr>
                     <th>Working Date</th>
-                    <th><a asp-page="/BusinessActivities/CreateNew" asp-route-Id="@Model.Business.BusinessID">Add new Working Day</a></th>
+                    <th><a asp-page="/BusinessActivities/CreateNew" asp-route-Id="@Model.Business.ID">Add new Working Day</a></th>
                 </tr>
                 @foreach (var item in Model.Business.DailyActivities)
                 {
@@ -94,6 +94,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Business.BusinessID">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.Business.ID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

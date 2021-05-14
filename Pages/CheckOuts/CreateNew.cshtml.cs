@@ -37,8 +37,8 @@ namespace Project334.Pages.CheckOuts
             _context.VisitorsCheckOut.Add(VisitorCheckOut);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Businesses/Index");
-            //return RedirectToPage("./Index");
+            //return RedirectToPage("/Businesses/Index");
+            return RedirectToPage("/BusinessActivities/Details", new { id = VisitorCheckOut.BusinessActivityID });
         }
     }
 }

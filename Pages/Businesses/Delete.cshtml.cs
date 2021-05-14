@@ -29,7 +29,7 @@ namespace Project334.Pages.Businesses
                 return NotFound();
             }
 
-            Business = await _context.Businesses.FirstOrDefaultAsync(m => m.BusinessID == id);
+            Business = await _context.Businesses.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Business == null)
             {

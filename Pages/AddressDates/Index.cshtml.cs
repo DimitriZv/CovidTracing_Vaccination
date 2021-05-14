@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Project334.Data;
 using Project334.Models;
 
-namespace Project334.Pages.Addresses
+namespace Project334.Pages.AddressDates
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace Project334.Pages.Addresses
             _context = context;
         }
 
-        public IList<Address> Address { get;set; }
+        public IList<AddressDate> AddressDate { get;set; }
 
         public async Task OnGetAsync()
         {
-            Address = await _context.Addresses.ToListAsync();
+            AddressDate = await _context.AddressDates.ToListAsync();
         }
     }
 }
