@@ -28,7 +28,7 @@ namespace Project334.Models
         public Sex Sex { get; set; }
 
 
-        [Display(Name = "Confirm Virus Date")]
+        [Display(Name = "Virus Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]
         public DateTime ConfirmDate { get; set; }

@@ -41,6 +41,11 @@ namespace Project334.Models
         [RegularExpression(@"[0-9]*\.?[0-9]+", ErrorMessage = "11 digits from 0 to 9")]
         public string ABN { get; set; }
 
+        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; }
+
         public virtual ICollection<BusinessActivity> DailyActivities { get; set; }
     }
 }

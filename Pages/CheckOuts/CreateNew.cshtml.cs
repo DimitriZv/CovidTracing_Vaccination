@@ -37,8 +37,11 @@ namespace Project334.Pages.CheckOuts
             _context.VisitorsCheckOut.Add(VisitorCheckOut);
             await _context.SaveChangesAsync();
 
-            //return RedirectToPage("/Businesses/Index");
-            return RedirectToPage("/BusinessActivities/Details", new { id = VisitorCheckOut.BusinessActivityID });
+            if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Bussiness"))
+            {
+                return RedirectToPage("/BusinessActivities/Details", new { id = VisitorCheckOut.BusinessActivityID });
+            }
+            else { return RedirectToPage("/Index"); }
         }
     }
 }

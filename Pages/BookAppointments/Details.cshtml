@@ -26,14 +26,14 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.HadVirus)
         </dt>
-            @if (Model.BookAppointment.Patient.HadVirus == true)
-            {
-                <dd class="col-sm-10"><label class="badge bg-warning text-wrap" style="width: 6rem;">Yes</label></dd>
-            }
-            @if (Model.BookAppointment.Patient.HadVirus == false)
-            {
-                <dd class="col-sm-10">No</dd>
-            }
+        @if (Model.BookAppointment.Patient.HadVirus == true)
+        {
+            <dd class="col-sm-10"><label class="badge bg-warning text-wrap" style="width: 6rem;">Yes</label></dd>
+        }
+        @if (Model.BookAppointment.Patient.HadVirus == false)
+        {
+            <dd class="col-sm-10">No</dd>
+        }
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.MobilePhone)
         </dt>
@@ -55,14 +55,14 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BookAppointment.EligibilityToVaccine)
         </dt>
-            @if (Model.BookAppointment.EligibilityToVaccine == true)
-            {
-                <dd class="col-sm-10">Yes</dd>
-            }
-            @if (Model.BookAppointment.EligibilityToVaccine == false)
-            {
-                <dd class="col-sm-10"><label class="badge bg-primary text-wrap" style="width: 6rem;">Not eligible</label></dd>
-            }
+        @if (Model.BookAppointment.EligibilityToVaccine == true)
+        {
+            <dd class="col-sm-10">Yes</dd>
+        }
+        @if (Model.BookAppointment.EligibilityToVaccine == false)
+        {
+            <dd class="col-sm-10"><label class="badge bg-primary text-wrap" style="width: 6rem;">Not eligible</label></dd>
+        }
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BookAppointment.Medicare)
         </dt>
@@ -71,30 +71,29 @@
         </dd>
     </dl>
 </div>
-<div>
-    <b>
-        <a asp-page="/Appointments/Create" asp-route-id="@Model.BookAppointment.BookAppointmentID"
-           asp-route-medicalid="@Model.BookAppointment.MedicalInstitutionID"
-           asp-route-lastname="@Model.BookAppointment.Patient.LastName"
-           asp-route-firstname="@Model.BookAppointment.Patient.FirstMidName"
-           asp-route-mobilephone="@Model.BookAppointment.Patient.MobilePhone"
-           asp-route-email="@Model.BookAppointment.Patient.Email"
-           asp-route-hadvirus="@Model.BookAppointment.Patient.HadVirus"
-           asp-route-medicare="@Model.BookAppointment.Medicare"
-           asp-route-eligibility="@Model.BookAppointment.EligibilityToVaccine"
-           asp-route-patientid="@Model.BookAppointment.Patient.ID"
-<<<<<<< HEAD
-           asp-route-patientdob="@Model.BookAppointment.Patient.DOB"
-           >
-=======
-           asp-route-patientdob="@Model.BookAppointment.Patient.DOB">
->>>>>>> 893a046b2eb932311dca35e4d2d1c5f8aba39762
-        
-        Create an Appointment</a>
-    </b>
-</div>
-    <hr />
+@if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Medical"))
+{
     <div>
-        <a asp-page="./Edit" asp-route-id="@Model.BookAppointment.BookAppointmentID" onclick="return false;">Edit</a> |
-        <a asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.BookAppointment.MedicalInstitutionID">Back to Medical Place</a>
+        <b>
+            <a asp-page="/Appointments/Create" asp-route-id="@Model.BookAppointment.BookAppointmentID"
+               asp-route-medicalid="@Model.BookAppointment.MedicalInstitutionID"
+               asp-route-lastname="@Model.BookAppointment.Patient.LastName"
+               asp-route-firstname="@Model.BookAppointment.Patient.FirstMidName"
+               asp-route-mobilephone="@Model.BookAppointment.Patient.MobilePhone"
+               asp-route-email="@Model.BookAppointment.Patient.Email"
+               asp-route-hadvirus="@Model.BookAppointment.Patient.HadVirus"
+               asp-route-medicare="@Model.BookAppointment.Medicare"
+               asp-route-eligibility="@Model.BookAppointment.EligibilityToVaccine"
+               asp-route-patientid="@Model.BookAppointment.Patient.ID"
+               asp-route-patientdob="@Model.BookAppointment.Patient.DOB">
+
+               Create an Appointment
+            </a>
+        </b>
     </div>
+}
+
+<hr />
+<div>
+    <a asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.BookAppointment.MedicalInstitutionID">Back to Medical Place</a>
+</div>

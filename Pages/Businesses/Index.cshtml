@@ -37,18 +37,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ABN)
             </td>
-            <td>
-<<<<<<< HEAD
-                <a asp-page="./Edit" asp-route-id="@item.ID" onclick="return false;">Edit</a> |
+            <td>    @*<!--onclick="return false;"-->*@
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-=======
-                <a asp-page="./Edit" asp-route-id="@item.BusinessID" onclick="return false;">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.BusinessID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.BusinessID">Delete</a>
->>>>>>> 893a046b2eb932311dca35e4d2d1c5f8aba39762
-            </td>
-        </tr>
+</tr>
 }
     </tbody>
 </table>

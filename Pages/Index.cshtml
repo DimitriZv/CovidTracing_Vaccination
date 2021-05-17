@@ -4,38 +4,147 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="row mb-auto">
-    <div class="col-md-4">
-        <div class="row no-gutters border mb-4">
-            <div class="col p-4 mb-4 ">
-                <p class="card-text">
-                    CAP is a covid-19 software application
-                </p>
-            </div>
-        </div>
+<form asp-page="Pages/Index" method="get">
+    <div class="input-group input-group-lg">
+        <span class="input-group-text">Category</span>
+        <select name="Category" @Model.CurrentFilterCase class="form-select">
+            <option selected value="Business">Business</option>
+            <option value="DangerousCases">DangerousCases</option>
+        </select>
+        <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <span class="input-group-text"> </span>
+        <a class="btn btn-info" asp-page="./Index">Remove</a>
     </div>
-    <div class="col-md-4">
-        <div class="row no-gutters border mb-4">
-            <div class="col p-4 d-flex flex-column position-static">
-                <p class="card-text mb-auto">
-                    You can build the application by following the steps in a series of tutorials.
-                </p>
-                <p>
-                    <a href="https://docs.microsoft.com/aspnet/core/data/ef-rp/intro" class="stretched-link">See the tutorial</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="row no-gutters border mb-4">
-            <div class="col p-4 d-flex flex-column">
-                <p class="card-text mb-auto">
-                    You can download the completed project from GitHub.
-                </p>
-                <p>
-                    <a href="https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples" class="stretched-link">See project source code</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+</form>
+
+
+
+@if (Model.Business != null && Model.Business.Count != 0)
+{
+    <table class="table table-success table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Business[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Business[0].Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Business[0].ABN)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Business)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ABN)
+                    </td>
+                    <td>
+                        @*<!--onclick="return false;"-->*@
+                        <a asp-page="Businesses/Details" asp-route-id="@item.ID">Details</a> |
+                        @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
+                        {
+                            <a asp-page="Businesses/Delete" asp-route-id="@item.ID">Delete</a>
+                        }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (Model.DangerousCases != null && Model.DangerousCases.Count != 0)
+{
+    <table class="table table-dark table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @*<a class="text-info" asp-page="./Index" asp-route-sortOrder="@Model.NameSort">*@
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].LastName)
+                    @*</a>*@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].FirstMidName)
+                </th>
+                <th>
+                    @*<a class="text-info" asp-page="./Index" asp-route-sortOrder="@Model.DateSort">*@
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].ConfirmDate)
+                    @*</a>*@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].MobilePhone)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.DangerousCases[0].FullName)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].Sex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DangerousCases[0].HasVaccine)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.DangerousCases)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstMidName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ConfirmDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobilePhone)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>*@
+                    <td class="text-white">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sex)
+                    </td>
+                    @if (item.HasVaccine == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    @if (item.HasVaccine == false)
+                    {
+                        <td>No</td>
+                    }
+                    <td>
+                        <a class="text-white" asp-page="DangerousCases/Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a class="text-info" asp-page="DangerousCases/Details" asp-route-id="@item.ID">Details</a> |
+                        <a class="text-white" asp-page="DangerousCases/Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using Project334.Models;
 
 namespace Project334.Pages.Businesses
 {
+    [Authorize(Roles = "Admin,Government")]
     public class EditModel : PageModel
     {
         private readonly Project334.Data.Project334Context _context;

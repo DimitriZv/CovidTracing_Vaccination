@@ -35,9 +35,16 @@ namespace Project334.Data
 
             var businesses = new Business[]
             {
-                new Business{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode="2000",Name="Big Boss",Phone="8765588888", ABN="12345678999"}
+                new Business{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode="2000",Name="Big Boss",Phone="8765588888", ABN="12345678999", Email="ff@bb.mm"}
             };
             context.Businesses.AddRange(businesses);
+            context.SaveChanges();
+
+            var medicalInstitutions = new MedicalInstitution[]
+            {
+                new MedicalInstitution{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="78",StreetName="King",City="Sydney",State="NSW",ZipCode="2005",Name="St.George",Phone="8765588654",Email="mm@mm.mm"}
+            };
+            context.MedicalInstitutions.AddRange(medicalInstitutions);
             context.SaveChanges();
 
             var businessActivities = new BusinessActivity[]

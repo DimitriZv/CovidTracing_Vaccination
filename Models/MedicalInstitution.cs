@@ -33,7 +33,12 @@ namespace Project334.Models
         [StringLength(10, MinimumLength = 10, ErrorMessage = "Mobile number is ten digits")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
-        
+
+        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; }
+
         public virtual ICollection<Appointment> Appointment { get; set; }
         //public virtual ICollection<BookAppointment> BookAppointments { get; set; }
     }

@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.MedicalInstitution[0].Phone)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.MedicalInstitution[0].Email)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.MedicalInstitution[0].FullAddress)
             </th>
             <th></th>
@@ -35,18 +38,21 @@
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.FullAddress)
             </td>
             <td>
-<<<<<<< HEAD
-                <a asp-page="./Edit" asp-route-id="@item.ID" onclick="return false;">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-=======
-                <a asp-page="./Edit" asp-route-id="@item.MedicalInstitutionID" onclick="return false;">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.MedicalInstitutionID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.MedicalInstitutionID">Delete</a>
->>>>>>> 893a046b2eb932311dca35e4d2d1c5f8aba39762
+                @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
+                {
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                }
+                @if (Model.User.IsInRole("Patient"))
+                {
+                    <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
+                }
+                | <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
             </td>
         </tr>
 }

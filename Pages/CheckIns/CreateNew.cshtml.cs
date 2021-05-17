@@ -37,7 +37,11 @@ namespace Project334.Pages.CheckIns
             _context.VisitorsCheckIn.Add(VisitorCheckIn);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/BusinessActivities/Details", new { id = VisitorCheckIn.BusinessActivityID });
+            if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Bussiness"))
+            {
+                return RedirectToPage("/BusinessActivities/Details", new { id = VisitorCheckIn.BusinessActivityID });
+            }
+            else { return RedirectToPage("/Index"); }
         }
     }
 }

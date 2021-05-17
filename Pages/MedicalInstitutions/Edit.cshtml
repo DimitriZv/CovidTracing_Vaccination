@@ -25,6 +25,11 @@
                 <span asp-validation-for="MedicalInstitution.Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="MedicalInstitution.Email" class="control-label"></label>
+                <input asp-for="MedicalInstitution.Email" class="form-control" />
+                <span asp-validation-for="MedicalInstitution.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

@@ -195,9 +195,9 @@ namespace Project334
         {
             //adding custom roles
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            string[] roleNames = { "Admin","Government", "Bussiness", "Medical", "Patient" };
+            string[] roleNames = { "Admin","Government", "Bussiness", "Medical", "Patient", "Visitor" };
             IdentityResult roleResult;
-
+            
             foreach (var roleName in roleNames)
             {
                 //creating the roles and seeding them to the database
