@@ -5,12 +5,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg">
+    <h1 class="display-4">Medical Patients</h1>
+    <hr class="my-4">
+    <a class="btn btn-success" asp-page="Create" role="button">Create New</a>
+</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-success table-striped table-hover">
     <thead>
         <tr>
             <th>
@@ -35,7 +36,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Patient) {
+        @foreach (var item in Model.Patient)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.MobilePhone)
@@ -46,21 +48,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FirstMidName)
             </td>
-            <td>
+            <td class="text-primary text-decoration-none">
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DOB)
             </td>
+            @if (item.HadVirus == true)
+            {
+                <td>Yes</td>
+            }
+            @if (item.HadVirus == false)
+            {
+                <td>No</td>
+            }
             <td>
-                @Html.DisplayFor(modelItem => item.HadVirus)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                @*<a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>*@
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

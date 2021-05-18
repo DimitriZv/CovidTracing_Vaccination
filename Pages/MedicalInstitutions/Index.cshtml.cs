@@ -22,10 +22,13 @@ namespace Project334.Pages.MedicalInstitutions
             _context = context;
         }
 
+        public string CurrentFilter { get; set; }
         public IList<MedicalInstitution> MedicalInstitution { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
+            CurrentFilter = searchString;
+
             var contacts = from c in _context.MedicalInstitutions
                            select c;
 
@@ -40,9 +43,13 @@ namespace Project334.Pages.MedicalInstitutions
             {
                 contacts = contacts.Where(c => c.Email == userName);
             }
-            else if (User.IsInRole("Patient"))
+            else if (User.IsInRole("Patient") && searchString == "ShowMyVisitedPlaces")
             {
                contacts = contacts.Where(p => p.Appointment.Any(s => s.BookAppointment.Patient.Email == userName));
+            }
+            else
+            {
+                
             }
 
             MedicalInstitution = await contacts

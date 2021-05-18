@@ -44,9 +44,55 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Patient.HadVirus)
         </dt>
+        @if (Model.Patient.HadVirus == true)
+        {
+            <dd class="col-sm-10">Yes</dd>
+        }
+        @if (Model.Patient.HadVirus == false)
+        {
+            <dd class="col-sm-10">No</dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Patient.Comment)
+        </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Patient.HadVirus)
+            @Html.DisplayFor(model => model.Patient.Comment)
         </dd>
+        @if (Model.Patient.Vaccines != null && Model.Patient.Vaccines.Count != 0)
+        {
+            <dd class="col-sm-10">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Numbe</th>
+                            <th>Production Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Patient.Vaccines)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Number)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductionDate)
+                                </td>
+                                <td>
+                                    <a asp-page="/Vaccines/Details" asp-route-id="@item.VaccineID">Details</a> |
+                                    @*<a asp-page="./Edit" asp-route-id="@item.VaccineID">Edit</a> |
+                                    <a asp-page="./Delete" asp-route-id="@item.VaccineID">Delete</a>*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </dd>
+        }
     </dl>
 </div>
 <div>

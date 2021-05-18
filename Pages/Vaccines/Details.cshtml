@@ -29,6 +29,62 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Vaccine.ProductionDate)
         </dd>
+        <dt></dt>
+        <dd><hr /></dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MedicalInstitution.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MedicalInstitution.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MedicalInstitution.FullAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MedicalInstitution.FullAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MedicalInstitution.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MedicalInstitution.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Appointment.AppointmentDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Appointment.AppointmentDate)
+        </dd>
+        <dt></dt>
+        <dd><hr /></dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Patient.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Patient.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Patient.MobilePhone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Patient.MobilePhone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Patient.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Patient.Email)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Appointment.BookAppointment.Medicare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Appointment.BookAppointment.Medicare)
+        </dd>*@
+        <dt class="col-sm-2"></dt>
+        <dd class="col-sm-10">
+            <a class="fw-bold" asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.MedicalInstitution.ID">Visit Medical Place</a>
+        </dd>
     </dl>
 </div>
 <div>

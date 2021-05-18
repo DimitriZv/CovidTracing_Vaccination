@@ -64,6 +64,12 @@
             <dd class="col-sm-10"><label class="badge bg-primary text-wrap" style="width: 6rem;">Not eligible</label></dd>
         }
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BookAppointment.Patient.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BookAppointment.Patient.Comment)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BookAppointment.Medicare)
         </dt>
         <dd class="col-sm-10">
@@ -75,7 +81,8 @@
 {
     <div>
         <b>
-            <a asp-page="/Appointments/Create" asp-route-id="@Model.BookAppointment.BookAppointmentID"
+            <a asp-page="/Appointments/Create" 
+               asp-route-bookid="@Model.BookAppointment.BookAppointmentID"
                asp-route-medicalid="@Model.BookAppointment.MedicalInstitutionID"
                asp-route-lastname="@Model.BookAppointment.Patient.LastName"
                asp-route-firstname="@Model.BookAppointment.Patient.FirstMidName"
@@ -85,7 +92,9 @@
                asp-route-medicare="@Model.BookAppointment.Medicare"
                asp-route-eligibility="@Model.BookAppointment.EligibilityToVaccine"
                asp-route-patientid="@Model.BookAppointment.Patient.ID"
-               asp-route-patientdob="@Model.BookAppointment.Patient.DOB">
+               asp-route-patientdob="@Model.BookAppointment.Patient.DOB"
+               asp-route-comment="@Model.BookAppointment.Patient.Comment"
+               >
 
                Create an Appointment
             </a>

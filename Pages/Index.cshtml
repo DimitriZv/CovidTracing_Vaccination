@@ -7,11 +7,18 @@
 <form asp-page="Pages/Index" method="get">
     <div class="input-group input-group-lg">
         <span class="input-group-text">Category</span>
-        <select name="Category" @Model.CurrentFilterCase class="form-select">
+        <select name="Category" @Model.CurrentFilterCase class="form-select col-md-4">
             <option selected value="Business">Business</option>
-            <option value="DangerousCases">DangerousCases</option>
+            <option value="Medical">Medical Places</option>
+            @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Medical") || Model.User.IsInRole("Government"))
+            {
+                <option value="DangerousCases">DangerousCases</option>
+                <option value="Patient">Patient</option>
+                <option value="Vaccine">Vaccines</option>
+                <option value="Visitor">Visitors</option>
+            }
         </select>
-        <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+        <input class="col-md-6" type="text" name="SearchString" value="@Model.CurrentFilter" />
         <input type="submit" value="Search" class="btn btn-primary" />
         <span class="input-group-text"> </span>
         <a class="btn btn-info" asp-page="./Index">Remove</a>
@@ -22,7 +29,7 @@
 
 @if (Model.Business != null && Model.Business.Count != 0)
 {
-    <table class="table table-success table-striped table-hover">
+    <table class="table table-warning table-striped table-hover">
         <thead>
             <tr>
                 <th>
@@ -32,7 +39,7 @@
                     @Html.DisplayNameFor(model => model.Business[0].Phone)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Business[0].ABN)
+                    @Html.DisplayNameFor(model => model.Business[0].FullAddress)
                 </th>
                 <th></th>
             </tr>
@@ -48,14 +55,14 @@
                         @Html.DisplayFor(modelItem => item.Phone)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ABN)
+                        @Html.DisplayFor(modelItem => item.FullAddress)
                     </td>
                     <td>
                         @*<!--onclick="return false;"-->*@
-                        <a asp-page="Businesses/Details" asp-route-id="@item.ID">Details</a> |
+                        <a class="text-primary text-decoration-none" asp-page="Businesses/Details" asp-route-id="@item.ID">Details</a> |
                         @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
                         {
-                            <a asp-page="Businesses/Delete" asp-route-id="@item.ID">Delete</a>
+                            <a class="text-primary text-decoration-none" asp-page="Businesses/Delete" asp-route-id="@item.ID">Delete</a>
                         }
                 </tr>
             }
@@ -65,7 +72,7 @@
 
 @if (Model.DangerousCases != null && Model.DangerousCases.Count != 0)
 {
-    <table class="table table-dark table-striped table-hover">
+    <table class="table table-warning table-striped table-hover">
         <thead>
             <tr>
                 <th>
@@ -139,12 +146,270 @@
                         <td>No</td>
                     }
                     <td>
-                        <a class="text-white" asp-page="DangerousCases/Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a class="text-info" asp-page="DangerousCases/Details" asp-route-id="@item.ID">Details</a> |
-                        <a class="text-white" asp-page="DangerousCases/Delete" asp-route-id="@item.ID">Delete</a>
+                        <a class="text-primary text-decoration-none" asp-page="DangerousCases/Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a class="text-primary text-decoration-none" asp-page="DangerousCases/Details" asp-route-id="@item.ID">Details</a> |
+                        <a class="text-primary text-decoration-none" asp-page="DangerousCases/Delete" asp-route-id="@item.ID">Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+}
+
+@if (Model.Patients != null && Model.Patients.Count != 0)
+{
+    <table class="table table-warning table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patients[0].MobilePhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patients[0].LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patients[0].FirstMidName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patients[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patients[0].DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patients[0].HadVirus)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Patients)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobilePhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstMidName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    @if (item.HadVirus == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    @if (item.HadVirus == false)
+                    {
+                        <td>No</td>
+                    }
+                    <td>
+                        <a class="text-primary text-decoration-none" asp-page="/Patients/Details" asp-route-id="@item.ID">Details</a>
+                        @*<a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (Model.MedicalInstitutions != null && Model.MedicalInstitutions.Count != 0)
+{
+    <table class="table table-warning table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedicalInstitutions[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedicalInstitutions[0].Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedicalInstitutions[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedicalInstitutions[0].FullAddress)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.MedicalInstitutions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullAddress)
+                    </td>
+                    <td>
+                        @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
+                        {
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        }
+                        | <a class="text-primary fw-bold text-decoration-none" asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a> |
+                        <a class="text-primary text-decoration-none" asp-page="/MedicalInstitutions/Details" asp-route-id="@item.ID">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (Model.Vaccines != null && Model.Vaccines.Count != 0)
+{
+    <table class="table table-warning table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vaccines[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vaccines[0].Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vaccines[0].ProductionDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Vaccines)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductionDate)
+                    </td>
+                    <td>
+                        <a class="text-primary text-decoration-none" asp-page="/Vaccines/Details" asp-route-id="@item.VaccineID">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (Model.VisitorsCheckIn != null && Model.VisitorsCheckIn.Count != 0)
+{
+<table class="table table-warning table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckIn[0].MobilePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckIn[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckIn[0].FirstMidName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckIn[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckIn[0].CheckIn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.VisitorsCheckIn)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobilePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckIn)
+                </td>
+                <td>
+                    <a class="text-primary text-decoration-none" asp-page="/CheckIns/Details" asp-route-id="@item.ID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+@if (Model.VisitorsCheckOut != null && Model.VisitorsCheckOut.Count != 0)
+{
+<table class="table table-warning table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckOut[0].MobilePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckOut[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckOut[0].FirstMidName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckOut[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitorsCheckOut[0].CheckOut)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.VisitorsCheckOut)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobilePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckOut)
+                </td>
+                <td>
+                    <a class="text-primary text-decoration-none" asp-page="/CheckOuts/Details" asp-route-id="@item.ID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 }

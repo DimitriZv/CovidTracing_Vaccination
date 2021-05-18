@@ -41,9 +41,14 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.VisitorCheckOut.CheckOut)
         </dd>
+        <dt class="col-sm-2"></dt>
+        <dd class="col-sm-10">
+            <a class="fw-bold" asp-page="/BusinessActivities/Details" asp-route-id="@Model.VisitorCheckOut.BusinessActivityID">Visit Daily Activity</a>
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.VisitorCheckOut.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    @*<a asp-page="./Edit" asp-route-id="@Model.VisitorCheckIn.ID">Edit</a>
+        <a asp-page="./Index">Back to List</a>*@ |
+    <a asp-page="/Index">Back to Search</a>
 </div>

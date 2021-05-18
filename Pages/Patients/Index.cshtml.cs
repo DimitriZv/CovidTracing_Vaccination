@@ -23,7 +23,9 @@ namespace Project334.Pages.Patients
 
         public async Task OnGetAsync()
         {
-            Patient = await _context.Patients.ToListAsync();
+            Patient = await _context.Patients
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

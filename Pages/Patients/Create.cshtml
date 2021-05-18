@@ -44,6 +44,12 @@
                 </label>
             </div>
             <div class="form-group">
+                <label asp-for="Patient.Comment" class="control-label"></label>
+                @*<input asp-for="Patient.Comment" class="form-control" />*@
+                <textarea asp-for="Patient.Comment" rows="4" cols="40" name="comment"></textarea>
+                <span asp-validation-for="Patient.Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

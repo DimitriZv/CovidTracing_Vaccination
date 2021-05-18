@@ -10,6 +10,22 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+@if (@Model.User.IsInRole("Patient") || !User.Identity.IsAuthenticated) 
+{
+<form asp-page="MedicalInstitutions/Index" method="get">
+    <div class="input-group input-group-lg">
+        <span class="input-group-text">Show All available Places</span>
+        <select name="searchString" @Model.CurrentFilter class="form-select col-md-2">
+            <option selected value="ShowAll">Show All available Places</option>
+            <option value="ShowMyVisitedPlaces">Show my Appointments</option>
+        </select>
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <span class="input-group-text"> </span>
+    </div>
+</form>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -48,10 +64,11 @@
                 {
                     <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
                 }
-                @if (Model.User.IsInRole("Patient"))
+                @*@if (Model.User.IsInRole("Patient"))
                 {
                     <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
-                }
+                }*@
+                <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
                 | <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
             </td>
         </tr>

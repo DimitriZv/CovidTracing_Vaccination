@@ -23,10 +23,8 @@ namespace Project334.Models
         [Required(ErrorMessage = "The HadVirus is required")]
         [Display(Name = "Had virus?")]
         public bool HadVirus { get; set; } = false;
-
-        /*[Required(ErrorMessage = "The Eligibility to Vaccination is required")]
-        [Display(Name = "Eligible To Vaccination?")]
-        public bool EligibilityToVaccine { get; set; }*/
+        
+        public string Comment { get; set; }
 
         public virtual ICollection<Vaccine> Vaccines { get; set; }
     }

@@ -29,6 +29,7 @@ namespace Project334.Pages.Appointments
 
         [BindProperty]
         public Appointment Appointment { get; set; }
+        public BookAppointment BookAppointment { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -37,7 +38,7 @@ namespace Project334.Pages.Appointments
                 return Page();
             }
 
-            if(Appointment.BookAppointment.Patient.HadVirus == true || Appointment.BookAppointment.EligibilityToVaccine == false)
+            if (Appointment.BookAppointment.Patient.HadVirus == true || Appointment.BookAppointment.EligibilityToVaccine == false)
             {
                 if (Appointment.BookAppointment.Patient.HadVirus == true) {
                     ModelState.AddModelError("Appointment.BookAppointment.Patient.HadVirus", "Not eligible to vaccination, because of the previous infection");
@@ -55,9 +56,14 @@ namespace Project334.Pages.Appointments
                 ModelState.AddModelError("Appointment.EligibilityToVaccine", "Not eligible to vaccination by medical staff decision");
                 return Page();
             }
-            
+
+            BookAppointment = Appointment.BookAppointment;
+
             _context.Appointments.Add(Appointment);
             await _context.SaveChangesAsync();
+
+            //_context.BookAppointments.Remove(BookAppointment);
+            //await _context.SaveChangesAsync();
 
             return RedirectToPage("/MedicalInstitutions/Details", new { id = Appointment.MedicalInstitutionID });
         }

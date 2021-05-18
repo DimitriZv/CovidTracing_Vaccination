@@ -12,7 +12,7 @@ using Project334.Models;
 
 namespace Project334.Pages.MedicalInstitutions
 {
-    [Authorize(Roles = "Admin,Government,Medical,Patient")]
+    //[Authorize(Roles = "Admin,Government,Medical,Patient")]
     public class DetailsModel : PageModel
     {
         private readonly Project334.Data.Project334Context _context;
@@ -32,11 +32,6 @@ namespace Project334.Pages.MedicalInstitutions
                 return NotFound();
             }
 
-            /*var contacts = from c in _context.BookAppointments
-                           select c;
-            var med = from f in _context.MedicalInstitutions
-                           select f;*/
-
             var userName = User.FindFirstValue(ClaimTypes.Name); //should be an email
 
             if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Medical"))
@@ -55,7 +50,7 @@ namespace Project334.Pages.MedicalInstitutions
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
             }
-            else if (User.IsInRole("Patient")) 
+            else if (User.IsInRole("Patient") /*|| !User.Identity.IsAuthenticated*/) 
             {
                 BookAppointments = await _context.BookAppointments
                 .Include(g => g.Patient)
@@ -66,51 +61,13 @@ namespace Project334.Pages.MedicalInstitutions
                 MedicalInstitution = await _context.MedicalInstitutions
                  .AsNoTracking()
                  .FirstOrDefaultAsync(m => m.ID == id);
-                //contacts = contacts.Where(c => c.Email == userName);
-                /*contacts = contacts
-                    .Include(g => g.Patient)
-                    .Where(h => h.MedicalInstitutionID == id)
-                    .Where(s => s.Patient.Email == userName);
-
-                med = med
-                .Include(s => s.Appointment)
-                    .ThenInclude(f => f.BookAppointment)
-                    .ThenInclude(b => b.Patient)
-                    .Where(c => c.Email == userName);*/
             }
-
-            /*BookAppointments = await contacts
-                .Include(g => g.Patient)
-                .Where(h => h.MedicalInstitutionID == id)
-                .ToListAsync();
-
-            MedicalInstitution = await med
-                .Include(s => s.Appointment)
-                    .ThenInclude(f => f.BookAppointment)
-                    .ThenInclude(b => b.Patient)
-                .Include(s => s.Appointment)
-                    .ThenInclude(v => v.Vaccine)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);*/
-
-
-
-
-            /*BookAppointments = await _context.BookAppointments
-                .Include(g => g.Patient)
-                .Where(h => h.MedicalInstitutionID == id)
-                //.OrderBy(i => i.MedicalInstitutionID)
-                .ToListAsync();*/
-
-                /*MedicalInstitution = await _context.MedicalInstitutions
-                    //.Include(h => h.MedicalAddress)
-                    .Include(s => s.Appointment)
-                        .ThenInclude(f => f.BookAppointment)
-                        .ThenInclude(b => b.Patient)
-                    .Include(s => s.Appointment)
-                        .ThenInclude(v => v.Vaccine)
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(m => m.ID == id);*/
+            else
+            {
+                MedicalInstitution = await _context.MedicalInstitutions
+                 .AsNoTracking()
+                 .FirstOrDefaultAsync(m => m.ID == id);
+            }
 
             if (MedicalInstitution == null)
             {

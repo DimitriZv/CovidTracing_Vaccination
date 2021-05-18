@@ -90,6 +90,20 @@ namespace Project334.Data
 
             context.VisitorsCheckOut.AddRange(visitorCheckOuts);
             context.SaveChanges();
+
+            var patients = new Patient[]
+            {
+                new Patient{MobilePhone="0490017004",LastName="Zverev",FirstMidName="Daniel",Email="zd@zd.zd",DOB=DateTime.Parse("10/04/1990 12:00:00 AM"), Comment="like to have a vaccination on Tuersday at any time", HadVirus=false},
+                new Patient{MobilePhone="0490017005",LastName="Rui",FirstMidName="Li",Email="ru@ru.ru",DOB=DateTime.Parse("3/04/1980 12:00:00 AM"), Comment="like to have a vaccination on Monday at any time", HadVirus=false},
+                new Patient{MobilePhone="0490017007",LastName="Smith",FirstMidName="John",Email="sj@sj.sj",DOB=DateTime.Parse("8/06/1980 12:00:00 AM"), Comment="like to have a vaccination on Wednesday at any time", HadVirus=false},
+                new Patient{MobilePhone="0490017008",LastName="Green",FirstMidName="Bob",Email="gb@gb.gb",DOB=DateTime.Parse("26/01/1970 12:00:00 AM"), Comment="like to have a vaccination on Thursday at any time", HadVirus=true},
+                new Patient{MobilePhone="0490017004",LastName="Demirof",FirstMidName="Leo",Email="dl@dl.dl",DOB=DateTime.Parse("15/07/1960 12:00:00 AM"), Comment="like to have a vaccination on Friday at any time", HadVirus=false},
+                new Patient{MobilePhone="0490017009",LastName="Johnson",FirstMidName="Boris",Email="jh@jh.jh",DOB=DateTime.Parse("10/05/1950 12:00:00 AM"), Comment="like to have a vaccination on Saturday at any time", HadVirus=false},
+                new Patient{MobilePhone="0490017010",LastName="Zvonorev",FirstMidName="Igor",Email="zi@zi.zi",DOB=DateTime.Parse("20/04/1985 12:00:00 AM"), Comment="like to have a vaccination on Sundat at any time", HadVirus=false}
+            };
+
+            context.Patients.AddRange(patients);
+            context.SaveChanges();
         }
     }
 }

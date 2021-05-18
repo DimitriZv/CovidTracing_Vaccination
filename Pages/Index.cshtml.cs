@@ -28,6 +28,12 @@ namespace Project334.Pages
         public string CurrentFilterCase { get; set; }
         public IList<Business> Business { get; set; }
         public IList<DangerousCase> DangerousCases { get; set; }
+        public IList<Patient> Patients { get; set; }
+        public IList<MedicalInstitution> MedicalInstitutions { get; set; }
+        public IList<Vaccine> Vaccines { get; set; }
+        public IList<VisitorCheckIn> VisitorsCheckIn { get; set; }
+        public IList<VisitorCheckOut> VisitorsCheckOut { get; set; }
+        public IList<BusinessActivity> BusinessActivities { get; set; }
 
         public async Task OnGetAsync(string searchString, string category)
         {
@@ -39,7 +45,23 @@ namespace Project334.Pages
 
             IQueryable<DangerousCase> dangerousCaseIQ = from s in _context.DangerousCases
                                                    select s;
-            
+
+            IQueryable<Patient> patientIQ = from s in _context.Patients
+                                            select s;
+
+            IQueryable<MedicalInstitution> medicalInstitutionsIQ = from s in _context.MedicalInstitutions
+                                                                  select s;
+
+            IQueryable<Vaccine> VaccinesQ = from s in _context.Vaccines
+                                            select s;
+
+            IQueryable<VisitorCheckIn> visitorCheckInQ = from s in _context.VisitorsCheckIn
+                                                         select s;
+            IQueryable<VisitorCheckOut> visitorCheckOutQ = from s in _context.VisitorsCheckOut
+                                                           select s;
+            IQueryable<BusinessActivity> businessActivitiesQ = from s in _context.BusinessActivities
+                                                           select s;
+
             if (!String.IsNullOrEmpty(searchString) && category == "Business")
             {
                 businessIQ = businessIQ.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())); //|| s.ABN.Contains(searchString));
@@ -50,8 +72,29 @@ namespace Project334.Pages
                 dangerousCaseIQ = dangerousCaseIQ.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()));
                 DangerousCases = await dangerousCaseIQ.AsNoTracking().ToListAsync();
             }
+            else if (!String.IsNullOrEmpty(searchString) && category == "Patient")
+            {
+                patientIQ = patientIQ.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()));
+                Patients = await patientIQ.Distinct().AsNoTracking().ToListAsync();
+            }
+            else if (!String.IsNullOrEmpty(searchString) && category == "Medical")
+            {
+                medicalInstitutionsIQ = medicalInstitutionsIQ.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper()));
+                MedicalInstitutions = await medicalInstitutionsIQ.AsNoTracking().ToListAsync();
+            }
+            else if (!String.IsNullOrEmpty(searchString) && category == "Vaccine")
+            {
+                VaccinesQ = VaccinesQ.Where(s => s.Number.ToUpper().Contains(searchString.ToUpper()));
+                Vaccines = await VaccinesQ.AsNoTracking().ToListAsync();
+            }
+            else if (!String.IsNullOrEmpty(searchString) && category == "Visitor")
+            {
+                visitorCheckInQ = visitorCheckInQ.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()));
+                VisitorsCheckIn = await visitorCheckInQ.AsNoTracking().ToListAsync();
 
-            
+                visitorCheckOutQ = visitorCheckOutQ.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()));
+                VisitorsCheckOut = await visitorCheckOutQ.AsNoTracking().ToListAsync();
+            }
         }
     }
 }

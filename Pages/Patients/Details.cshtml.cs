@@ -28,7 +28,10 @@ namespace Project334.Pages.Patients
                 return NotFound();
             }
 
-            Patient = await _context.Patients.FirstOrDefaultAsync(m => m.ID == id);
+            Patient = await _context.Patients
+                .Include(s => s.Vaccines)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Patient == null)
             {
