@@ -5,11 +5,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<div class="shadow p-3 m-3 bg-light rounded-lg">
+    <h1 class="display-4">Done Vaccines</h1>
+    <hr class="my-4">
+    <a class="btn btn-warning" asp-page="Create" role="button">Create New</a>
+</div>
+
 
 @if (@Model.User.IsInRole("Patient") || !User.Identity.IsAuthenticated) 
 {
@@ -26,7 +28,7 @@
 </form>
 }
 
-<table class="table">
+<table class="font-monospace table table-warning table-striped table-hover">
     <thead>
         <tr>
             <th>
@@ -45,33 +47,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.MedicalInstitution) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullAddress)
-            </td>
-            <td>
-                @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
-                {
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                }
-                @*@if (Model.User.IsInRole("Patient"))
-                {
-                    <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
-                }*@
-                <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
-                | <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.MedicalInstitution)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullAddress)
+                </td>
+                <td>
+                    @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
+                    {
+                        <a class="text-primary fw-bold text-decoration-none" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    }
+                    @*@if (Model.User.IsInRole("Patient"))
+                        {
+                            <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
+                        }*@
+                    <a class="text-primary fw-bold text-decoration-none" asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a>
+                    | <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

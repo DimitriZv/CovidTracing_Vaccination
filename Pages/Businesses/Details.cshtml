@@ -5,108 +5,151 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>@Model.Business.Name</h1>
-
-<div>
-    <h4>Company Information and Activities</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.ABN)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.ABN)
-        </dd>
-
-        <dd class="col-sm-12"><hr /></dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.StreetNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.StreetNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.StreetName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.StreetName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.City)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.City)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.State)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.State)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.ZipCode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.ZipCode)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Business.Country)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Business.Country)
-        </dd>
-        <dd><hr /></dd>
-
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Working Date</th>
-                    @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Bussiness"))
-                    {
-                        <th><a asp-page="/BusinessActivities/CreateNew" asp-route-Id="@Model.Business.ID">Add new Working Day</a></th>
-                    }
-                </tr>
-                @foreach (var item in Model.Business.DailyActivities)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.WorkingDate)
-                        </td>
-                        @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Bussiness"))
-                        {
-                            <td><a asp-page="/BusinessActivities/Details" asp-route-Id="@item.BusinessActivityID">Show Visitors</a></td>
-                        }
-                        <td><a asp-page="/CheckIns/CreateNew" asp-route-Id="@item.BusinessActivityID">Add CheckIn</a></td>
-                        <td><a asp-page="/CheckOuts/CreateNew" asp-route-Id="@item.BusinessActivityID">Add CheckOut</a></td>
-                    </tr>
-                }
-            </table>
-        </dd>
-    </dl>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h1 class="display-4">@Model.Business.Name</h1>
+    <hr class="my-4">
+    @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Bussiness"))
+    {
+        <a class="btn btn-info" role="button" asp-page="/BusinessActivities/CreateNew" asp-route-Id="@Model.Business.ID">Add new Working Day</a>
+    }
 </div>
+
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.Name)</div>
+        <h6 class="col-md-5">@Html.DisplayFor(model => model.Business.Name)</h6>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.Phone)</div>
+        <h6 class="col-md-5">@Html.DisplayFor(model => model.Business.Phone)</h6>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.Email)</div>
+        <h6 class="col-md-5">@Html.DisplayFor(model => model.Business.Email)</h6>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.ABN)</div>
+        <h6 class="col-md-5">@Html.DisplayFor(model => model.Business.ABN)</h6>
+    </div>
+</div>
+
+@*<dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Business.Name)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Business.Name)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Business.Phone)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Business.Phone)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Business.Email)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Business.Email)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Business.ABN)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Business.ABN)
+    </dd>*@
+
+
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h4>Address</h4>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.StreetNumber)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.Business.StreetNumber)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.StreetName)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.Business.StreetName)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.City)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.Business.City)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.State)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.Business.State)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.ZipCode)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.Business.ZipCode)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.Business.Country)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.Business.Country)</div>
+    </div>
+</div>
+    @*<dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Business.StreetNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Business.StreetNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Business.StreetName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Business.StreetName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Business.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Business.City)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Business.State)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Business.State)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Business.ZipCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Business.ZipCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Business.Country)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Business.Country)
+            </dd>
+        </dl>*@
+
+<table class="font-monospace table table-info table-striped table-hover col-md-10">
+    <tr class="p-3 m-3 bg-light rounded-lg col-md-4">
+        <td>Daily Activities</td>
+    </tr>
+    @foreach (var item in Model.Business.DailyActivities)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkingDate)
+            </td>
+            @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Bussiness"))
+            {
+                <td><a class="text-primary text-decoration-none" asp-page="/BusinessActivities/Details" asp-route-Id="@item.BusinessActivityID">Show Visitors</a></td>
+            }
+            <td><a class="text-primary text-decoration-none" asp-page="/CheckIns/CreateNew" asp-route-Id="@item.BusinessActivityID">Add CheckIn</a></td>
+            <td><a class="text-primary text-decoration-none" asp-page="/CheckOuts/CreateNew" asp-route-Id="@item.BusinessActivityID">Add CheckOut</a></td>
+        </tr>
+    }
+</table>
+
 <div>
     @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Bussiness"))
     {
-        <a asp-page="./Index">Back to List</a>
+        <a class="btn btn-primary" role="button" asp-page="./Index">Back to List</a>
     }
-    | <a asp-page="/Index">Back to Search</a>
+    <a class="btn btn-primary" role="button" asp-page="/Index">Back to Search</a>
 </div>

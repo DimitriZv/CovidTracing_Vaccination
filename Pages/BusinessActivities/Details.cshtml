@@ -5,74 +5,64 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>BusinessActivity</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessActivity.WorkingDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BusinessActivity.WorkingDate)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessActivity.VisitorCheckIn)
-        </dt>
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Full Name</th>
-                    <th>Mobile</th>
-                    <th>CheckIn</th>
-                </tr>
-                @foreach (var item in Model.BusinessActivity.VisitorCheckIn)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MobilePhone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CheckIn)
-                        </td>
-                    </tr>
-                }
-            </table>
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessActivity.VisitorCheckOut)
-        </dt>
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Full Name</th>
-                    <th>Mobile</th>
-                    <th>CheckOut</th>
-                </tr>
-                @foreach (var item in Model.BusinessActivity.VisitorCheckOut)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MobilePhone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CheckOut)
-                        </td>
-                    </tr>
-                }
-            </table>
-        </dd>
-    </dl>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h4 class="display-4">Daily Business Activity</h4>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.BusinessActivity.WorkingDate)</div>
+        <h4 class="col-md-5">@Html.DisplayFor(model => model.BusinessActivity.WorkingDate)</h4>
+    </div>
 </div>
+
+<div class="badge text-wrap bg-info fs-5" style="width: 16rem;">Visitors Check In</div>
+
+<table class="font-monospace table table-info table-striped table-hover col-md-10">
+    @*tr><th>Visitors Check In</th></tr>*@
+    <tr>
+        <th>Full Name</th>
+        <th>Mobile</th>
+        <th>CheckIn</th>
+    </tr>
+    @foreach (var item in Model.BusinessActivity.VisitorCheckIn)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn)
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="badge bg-warning text-wrap fs-5 text-dark" style="width: 16rem;">Visitors Check Out</div>
+
+<table class="font-monospace table table-warning table-striped table-hover col-md-10">
+    @*<tr><th>Visitors Check Out</th></tr>*@
+    <tr>
+        <th>Full Name</th>
+        <th>Mobile</th>
+        <th>CheckOut</th>
+    </tr>
+    @foreach (var item in Model.BusinessActivity.VisitorCheckOut)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+        </tr>
+    }
+</table>
 <div>
-    <a asp-page="/Businesses/Details" asp-route-id="@Model.BusinessActivity.BusinessID">Back to business activity</a>
+    <a class="btn btn-primary" role="button"  asp-page="/Businesses/Details" asp-route-id="@Model.BusinessActivity.BusinessID">Back to business</a>
 </div>
