@@ -1,0 +1,39 @@
+﻿@page
+@model Project334.Pages.Alerts.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Alert</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Alert.DangerousCaseID" class="control-label"></label>
+                <select asp-for="Alert.DangerousCaseID" class ="form-control" asp-items="ViewBag.DangerousCaseID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alert.Comment" class="control-label"></label>
+                <input asp-for="Alert.Comment" class="form-control" />
+                <span asp-validation-for="Alert.Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

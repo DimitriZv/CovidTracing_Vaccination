@@ -33,7 +33,7 @@ namespace Project334
                 {
                     var context = services.GetRequiredService<Project334Context>();
                     context.Database.EnsureCreated();
-                    DbInitializer.Initialize(context); //polupate seeds
+                    //DbInitializer.Initialize(context); //polupate seeds
                 }
                 catch (Exception ex)
                 {

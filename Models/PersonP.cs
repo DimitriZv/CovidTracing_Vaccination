@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project334.Models
 {
-    public abstract class Person
+    public abstract class PersonP
     {
         public abstract int ID { get; set; }
 

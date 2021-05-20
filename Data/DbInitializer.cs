@@ -35,14 +35,14 @@ namespace Project334.Data
 
             var businesses = new Business[]
             {
-                new Business{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode="2000",Name="Big Boss",Phone="8765588888", ABN="12345678999", Email="ff@bb.mm"}
+                new Business{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="1",StreetName="Street1",City="Sydney",State="NSW",ZipCode=2000,Name="Big Boss",Phone="8765588888", ABN="12345678999", Email="ff@bb.mm"}
             };
             context.Businesses.AddRange(businesses);
             context.SaveChanges();
 
             var medicalInstitutions = new MedicalInstitution[]
             {
-                new MedicalInstitution{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="78",StreetName="King",City="Sydney",State="NSW",ZipCode="2005",Name="St.George",Phone="8765588654",Email="mm@mm.mm"}
+                new MedicalInstitution{/*CompanyAddress=addresses[1],*//*CompanyAddress={*/StreetNumber="78",StreetName="King",City="Sydney",State="NSW",ZipCode=2005,Name="St.George",Phone="8765588654",Email="mm@mm.mm"}
             };
             context.MedicalInstitutions.AddRange(medicalInstitutions);
             context.SaveChanges();
@@ -68,7 +68,8 @@ namespace Project334.Data
                 new VisitorCheckIn{MobilePhone="0492111115",FirstMidName="Yan",LastName="Li",Email="yl@yl.yl",BusinessActivityID=1,CheckIn=DateTime.Parse("10/04/2021 6:45:00 PM")},
                 new VisitorCheckIn{MobilePhone="0492111116",FirstMidName="Peggy",LastName="Justice",Email="pj@pj.pj",BusinessActivityID=1,CheckIn=DateTime.Parse("15/04/2021 12:22:00 PM")},
                 new VisitorCheckIn{MobilePhone="0492111117",FirstMidName="Laura",LastName="Norman",Email="ln@ln.ln",BusinessActivityID=1,CheckIn=DateTime.Parse("11/04/2021 7:45:00 PM")},
-                new VisitorCheckIn{MobilePhone="0492111118",FirstMidName="Nino",LastName="Olivetto",Email="no@no.no",BusinessActivityID=1,CheckIn=DateTime.Parse("10/04/2021 1:33:00 PM")}
+                new VisitorCheckIn{MobilePhone="0492111118",FirstMidName="Nino",LastName="Olivetto",Email="no@no.no",BusinessActivityID=1,CheckIn=DateTime.Parse("10/04/2021 1:33:00 PM")},
+                new VisitorCheckIn{MobilePhone="0492111119",FirstMidName="Latino",LastName="Ciusino",Email="nobo@nobo.nobo",BusinessActivityID=1,CheckIn=DateTime.Parse("13/04/2021 10:55:00 PM")}
             };
 
             context.VisitorsCheckIn.AddRange(visitorCheckIns);

@@ -16,7 +16,7 @@ namespace Project334.Models
         public override string StreetName { get; set; }
         public override string City { get; set; }
         public override string State { get; set; }
-        public override string ZipCode { get; set; }
+        public override int ZipCode { get; set; } //public override string ZipCode { get; set; }
         public override string Country { get; set; } = "Australia";
 
         /*[Required(ErrorMessage = "The Address is required")]
@@ -25,7 +25,7 @@ namespace Project334.Models
 
         [Display(Name = "Company name")]
         [Required(ErrorMessage = "The Company name is required")]
-        [StringLength(30)]
+        [StringLength(50)]
         public string Name { get; set; }
 
         [Display(Name = "Phone number")]

@@ -10,7 +10,7 @@ namespace Project334.Models
         Male, Female
     }
 
-    public class DangerousCase : Person
+    public class DangerousCase : PersonP
     {
         public override int ID { get; set; }
         public override string MobilePhone { get; set; }

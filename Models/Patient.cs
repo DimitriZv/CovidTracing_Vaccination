@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project334.Models
 {
-    public class Patient : Person
+    public class Patient : PersonP
     {
         public override int ID { get; set; }
         public override string MobilePhone { get; set; }

@@ -59,8 +59,8 @@ namespace Project334.Pages
                                                          select s;
             IQueryable<VisitorCheckOut> visitorCheckOutQ = from s in _context.VisitorsCheckOut
                                                            select s;
-            IQueryable<BusinessActivity> businessActivitiesQ = from s in _context.BusinessActivities
-                                                           select s;
+            /*IQueryable<BusinessActivity> businessActivitiesQ = from s in _context.BusinessActivities
+                                                           select s;*/
 
             if (!String.IsNullOrEmpty(searchString) && category == "Business")
             {

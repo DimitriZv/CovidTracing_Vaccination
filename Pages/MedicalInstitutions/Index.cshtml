@@ -65,7 +65,7 @@
                 <td>
                     @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
                     {
-                        <a class="text-primary fw-bold text-decoration-none" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        <a class="text-primary text-decoration-none" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
                     }
                     @*@if (Model.User.IsInRole("Patient"))
                         {

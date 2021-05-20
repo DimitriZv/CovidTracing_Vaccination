@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project334.Models
 {
-    public class VisitorCheckIn : Person
+    public class VisitorCheckIn : PersonP
     {
         public override int ID { get; set; }
         public override string MobilePhone { get; set; }

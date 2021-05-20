@@ -16,7 +16,7 @@ namespace Project334.Models
         public override string StreetName { get; set; }
         public override string City { get; set; }
         public override string State { get; set; }
-        public override string ZipCode { get; set; }
+        public override int ZipCode { get; set; } //public override string ZipCode { get; set; }
         public override string Country { get; set; } = "Australia";
 
         /*[Required(ErrorMessage = "The Address is required")]

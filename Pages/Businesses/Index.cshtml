@@ -11,17 +11,33 @@
     <a class="btn btn-primary" asp-page="Create" role="button">Create New</a>
 </div>
 
+    <form asp-page="./Index" method="get">
+        <div class="input-group input-group-lg">
+            <span class="input-group-text bg-light">Find by name</span>
+            <input class="col-md-4" type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <span class="input-group-text"> </span>
+            <a class="btn btn-info" asp-page="./Index">Remove</a>
+        </div>
+    </form>
+
 <table class="font-monospace table table-primary table-striped table-hover">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Business[0].Name)
+                <a class="text-primary text-decoration-none" asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Business[0].Name)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Business[0].Phone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Business[0].FullAddress)
+                <a class="text-primary text-decoration-none" asp-page="./Index" asp-route-sortOrder="@Model.CitySort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Business[0].FullAddress) - Sort by City
+                </a>
             </th>
             <th></th>
         </tr>
@@ -47,3 +63,32 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Business.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Business.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Business.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Business.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>
+
+<div class="badge bg-light text-dark text-wrap fs-6 fw-bold" style="width: 6rem;">
+    Page - @Model.Business.PageIndex
+</div>
+
+<div class="badge bg-light text-dark text-wrap fs-6 fw-bold float-end" style="width: 16rem;">
+    Total Pages - @Model.Business.TotalPages | @Model.pageSizeView each page
+</div>

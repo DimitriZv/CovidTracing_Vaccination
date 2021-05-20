@@ -7,91 +7,155 @@
 
 <div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
     <h4 class="display-4">Dangerous Case</h4>
-    <a class="btn btn-danger" role="button"  asp-page="/AddressDates/Create" asp-route-Id="@Model.DangerousCase.ID">Add Address</a>
+    <a class="btn btn-danger" role="button" asp-page="/AddressDates/Create" asp-route-Id="@Model.dangerousCase.ID">Add Address</a>
     <hr class="my-4">
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.LastName)</div>
-        <h4 class="col-md-5">@Html.DisplayFor(model => model.DangerousCase.LastName)</h4>
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.LastName)</div>
+        <h4 class="col-md-5">@Html.DisplayFor(model => model.dangerousCase.LastName)</h4>
     </div>
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.FirstMidName)</div>
-        <h4 class="col-md-5">@Html.DisplayFor(model => model.DangerousCase.FirstMidName)</h4>
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.FirstMidName)</div>
+        <h4 class="col-md-5">@Html.DisplayFor(model => model.dangerousCase.FirstMidName)</h4>
     </div>
 </div>
 
 <div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.MobilePhone)</div>
-        <div class="col-md-5">@Html.DisplayFor(model => model.DangerousCase.MobilePhone)</div>
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.MobilePhone)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.dangerousCase.MobilePhone)</div>
     </div>
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.Email)</div>
-        <div class="col-md-5">@Html.DisplayFor(model => model.DangerousCase.Email)</div>
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.Email)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.dangerousCase.Email)</div>
     </div>
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.DOB)</div>
-        <div class="col-md-5">@Html.DisplayFor(model => model.DangerousCase.DOB)</div>
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.DOB)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.dangerousCase.DOB)</div>
     </div>
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.Sex)</div>
-        <div class="col-md-5">@Html.DisplayFor(model => model.DangerousCase.Sex)</div>
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.Sex)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.dangerousCase.Sex)</div>
     </div>
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.ConfirmDate)</div>
-        <div class="col-md-5">@Html.DisplayFor(model => model.DangerousCase.ConfirmDate)</div>
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.ConfirmDate)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.dangerousCase.ConfirmDate)</div>
     </div>
     <div class="row">
-        <div class="col-md-3">@Html.DisplayNameFor(model => model.DangerousCase.HasVaccine)</div>
-        @if (Model.DangerousCase.HasVaccine == true)
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.dangerousCase.HasVaccine)</div>
+        @if (Model.dangerousCase.HasVaccine == true)
         {
             <div class="col-md-5">Yes</div>
         }
-        @if (Model.DangerousCase.HasVaccine == false)
+        @if (Model.dangerousCase.HasVaccine == false)
         {
             <div class="col-md-5">No</div>
         }
     </div>
 </div>
 
-<div class="badge bg-danger text-wrap fs-5" style="width: 16rem;">Visited Addresses</div>
-    <table class="font-monospace table table-danger table-striped table-hover col-md-10">
+<div class="badge bg-danger text-wrap fs-5" style="width: 20rem;">Visited Addresses Check In</div>
+<table class="font-monospace table table-danger table-striped table-hover col-md-10">
+    <tr>
+        <th>Date of Visit</th>
+        <th>Full Name</th>
+        <th>Mobile</th>
+        <th>Business Activity ID</th>
+    </tr>
+    @foreach (var item in Model.visitorsCheckIn)
+    {
         <tr>
-            <th>Date of Visit</th>
-            <th>Street Number</th>
-            <th>Street Name</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip Code</th>
-            <th>Country</th>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessActivityID)
+            </td>
+            <td>
+                <a class="text-primary text-decoration-none" asp-page="/BusinessActivities/Details" asp-route-id="@item.BusinessActivityID">Visit Daily Activity</a>
+            </td>
         </tr>
-        @foreach (var item in Model.DangerousCase.VisitedPlaces)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfVisit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StreetNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StreetName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.State)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ZipCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-            </tr>
-        }
-    </table>
+    }
+</table>
+
+<div class="badge bg-danger text-wrap fs-5" style="width: 20rem;">Visited Addresses Check Out</div>
+<table class="font-monospace table table-danger table-striped table-hover col-md-10">
+    <tr>
+        <th>Date of Visit</th>
+        <th>Full Name</th>
+        <th>Mobile</th>
+        <th>Business Activity ID</th>
+    </tr>
+    @foreach (var item in Model.visitorsCheckOut)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessActivityID)
+            </td>
+            <td>
+                <a class="text-primary text-decoration-none" asp-page="/BusinessActivities/Details" asp-route-id="@item.BusinessActivityID">Visit Daily Activity</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="badge bg-danger text-wrap fs-5" style="width: 16rem;">Visited Addresses Added Manually</div>
+<table class="font-monospace table table-danger table-striped table-hover col-md-10">
+    <tr>
+        <th>Date of Visit</th>
+        <th>Street Number</th>
+        <th>Street Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Country</th>
+    </tr>
+    @foreach (var item in Model.dangerousCase.VisitedPlaces)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfVisit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+        </tr>
+    }
+</table>
+
+
 <div>
-    <a class="btn btn-primary" role="button" asp-page="./Edit" asp-route-id="@Model.DangerousCase.ID">Edit</a> |
+    <a class="btn btn-primary" role="button" asp-page="./Edit" asp-route-id="@Model.dangerousCase.ID">Edit</a> |
     <a class="btn btn-primary" role="button" asp-page="./Index">Back to List</a>
 </div>

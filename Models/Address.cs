@@ -30,11 +30,17 @@ namespace Project334.Models
         [StringLength(30)]
         public abstract string State { get; set; }
 
-        [Required(ErrorMessage = "Zip Code is required")]
+        /*[Required(ErrorMessage = "Zip Code is required")]
         [RegularExpression("([0-9]+)", ErrorMessage = "4 numbers from 0 to 9")]
         [StringLength(4, MinimumLength = 4, ErrorMessage = "Zip Code cannot be longer than 4 numbers")]
         [Display(Name = "Zip Code")]
-        public abstract string ZipCode { get; set; }
+        public abstract string ZipCode { get; set; }*/
+        [Required(ErrorMessage = "Zip Code is required")]
+        [RegularExpression("([0-9]+)", ErrorMessage = "4 numbers from 0 to 9")]
+        //[StringLength(4, MinimumLength = 4, ErrorMessage = "Zip Code cannot be longer than 4 numbers")]
+        [Range(1000, 9999)]
+        [Display(Name = "Zip Code")]
+        public abstract int ZipCode { get; set; }
 
         [StringLength(15)]
         public abstract string Country { get; set; }
