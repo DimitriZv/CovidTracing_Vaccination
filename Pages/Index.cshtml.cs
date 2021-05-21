@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Project334.ViewModels;
 
 namespace Project334.Pages
 {
@@ -35,6 +36,14 @@ namespace Project334.Pages
         public IList<VisitorCheckOut> VisitorsCheckOut { get; set; }
         public IList<BusinessActivity> BusinessActivities { get; set; }
 
+        public int DangCaseCount { get; set; }
+        public int DangCaseCountNSW { get; set; }
+        public int DangCaseCountACT { get; set; }
+        public int DangCaseCountWA { get; set; }
+        public int DangCaseCountQLD { get; set; }
+        public int DangCaseCountSA { get; set; }
+        public int DangCaseCountVIC { get; set; }
+
         public async Task OnGetAsync(string searchString, string category)
         {
             CurrentFilter = searchString;
@@ -59,8 +68,8 @@ namespace Project334.Pages
                                                          select s;
             IQueryable<VisitorCheckOut> visitorCheckOutQ = from s in _context.VisitorsCheckOut
                                                            select s;
-            /*IQueryable<BusinessActivity> businessActivitiesQ = from s in _context.BusinessActivities
-                                                           select s;*/
+            IQueryable<AddressDate> addressDatesQ = from s in _context.AddressDates
+                                                           select s;
 
             if (!String.IsNullOrEmpty(searchString) && category == "Business")
             {
@@ -95,6 +104,14 @@ namespace Project334.Pages
                 visitorCheckOutQ = visitorCheckOutQ.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()));
                 VisitorsCheckOut = await visitorCheckOutQ.AsNoTracking().ToListAsync();
             }
+
+            DangCaseCountNSW = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("NSW"));
+            DangCaseCountVIC = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("VIC"));
+            DangCaseCountSA = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("SA"));
+            DangCaseCountACT = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("ACT"));
+            DangCaseCountQLD = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("QLD"));
+            DangCaseCountWA = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("WA"));
+            DangCaseCount = dangerousCaseIQ.Count();
         }
     }
 }

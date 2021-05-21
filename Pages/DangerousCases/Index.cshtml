@@ -35,6 +35,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.DangerousCases[0].MobilePhone)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DangerousCases[0].City)
+            </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.DangerousCases[0].FullName)
                 </th>*@
@@ -42,7 +45,7 @@
                 @Html.DisplayNameFor(model => model.DangerousCases[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DangerousCases[0].DOB)
+                DOB
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DangerousCases[0].Sex)
@@ -68,6 +71,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.MobilePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.FullName)

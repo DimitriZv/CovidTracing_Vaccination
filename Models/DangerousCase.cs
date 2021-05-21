@@ -18,6 +18,14 @@ namespace Project334.Models
         public override string FirstMidName { get; set; }
         public override string Email { get; set; }
 
+        [Required(ErrorMessage = "The City is required")]
+        [StringLength(50)]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "The State is required")]
+        [StringLength(30)]
+        public string State { get; set; }
+
         [Display(Name = "Date of Birth")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid Format")]
