@@ -93,8 +93,8 @@ namespace Project334.Pages.Businesses
             pageSizeView = pageSize;
             Business = await PaginatedList<Business>.CreateAsync(
                 contacts.AsNoTracking(), pageIndex ?? 1, pageSize);
+            
             //Business = await contacts.ToListAsync();
-
             //Business = await _context.Businesses.ToListAsync();
         }
     }

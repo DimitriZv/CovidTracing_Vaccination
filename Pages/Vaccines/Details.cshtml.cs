@@ -40,13 +40,17 @@ namespace Project334.Pages.Vaccines
             IQueryable<Vaccine> vaccinesQ = from s in _context.Vaccines
                                             select s;
 
-            Appointment = appointmentQ.FirstOrDefault(s => s.Vaccine.VaccineID == id);
+            Appointment = appointmentQ
+                .Include(s => s.BookAppointment)
+                .AsNoTracking()
+                .FirstOrDefault(s => s.Vaccine.VaccineID == id);
+
             MedicalInstitution = medicalInstitutionQ.FirstOrDefault(d => d.ID == Appointment.MedicalInstitutionID);
             
-            Vaccine = vaccinesQ.FirstOrDefault(m => m.VaccineID == id);
+            Vaccine = vaccinesQ.AsNoTracking().FirstOrDefault(m => m.VaccineID == id);
             int patId = Vaccine.PatientID;
 
-            Patient = patientsQ.FirstOrDefault(f => f.ID == patId);
+            Patient = patientsQ.AsNoTracking().FirstOrDefault(f => f.ID == patId);
 
             Vaccine = await _context.Vaccines
                 .AsNoTracking()

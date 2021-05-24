@@ -23,7 +23,9 @@ namespace Project334.Pages.CheckOuts
 
         public async Task OnGetAsync()
         {
-            VisitorCheckOut = await _context.VisitorsCheckOut.ToListAsync();
+            VisitorCheckOut = await _context.VisitorsCheckOut
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

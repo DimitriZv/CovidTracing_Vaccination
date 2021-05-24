@@ -5,159 +5,175 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>@Model.MedicalInstitution.Name</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h1 class="display-4">@Model.MedicalInstitution.Name</h1>
+    <hr class="my-4">
+    <a class="btn btn-success" role="button" asp-page="/BookAppointments/Create" asp-route-Id="@Model.MedicalInstitution.ID">Book an appointment</a>
+    @*@if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Medical") || Model.User.IsInRole("Patient)
+        {
+            <a class="btn btn-success" role="button" asp-page="/BookAppointments/Create" asp-route-Id="@Model.MedicalInstitution.ID">Book an appointment</a>
+        }*@
+</div>
 
-<div>
-    <h4>Information and Activities</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.Email)
-        </dd>
-    </dl>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.Name)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.Name)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.Phone)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.Phone)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.Email)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.Email)</div>
+    </div>
+</div>
 
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.StreetNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.StreetNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.StreetName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.StreetName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.City)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.City)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.State)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.State)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicalInstitution.ZipCode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicalInstitution.ZipCode)
-        </dd>
-    </dl>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h4>Address</h4>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.StreetNumber)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.StreetNumber)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.StreetName)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.StreetName)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.City)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.City)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.State)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.State)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.ZipCode)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.ZipCode)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">@Html.DisplayNameFor(model => model.MedicalInstitution.Country)</div>
+        <div class="col-md-5">@Html.DisplayFor(model => model.MedicalInstitution.Country)</div>
+    </div>
+</div>
+
+
+@*@if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government") || Model.User.IsInRole("Medical"))
+    {*@
+@if (Model.BookAppointments != null && Model.BookAppointments.Count != 0)
+{
+    <div class="badge bg-success text-wrap fs-5" style="width: 20rem;">Booked Appointments</div>
+    <table class="font-monospace table table-success table-striped table-hover col-md-10">
+        <tr>
+            <th>Full Name</th>
+            <th>Eligibility</th>
+            <th>Had Virus?</th>
+            <th>Medicare</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.BookAppointments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.FullName)
+                </td>
+                @*@Html.DisplayFor(modelItem => item.EligibilityToVaccine)*@
+                @if (item.EligibilityToVaccine == true)
+                {
+                    <td>Yes</td>
+                }
+                @if (item.EligibilityToVaccine == false)
+                {
+                    <td><div class="badge bg-primary text-wrap" style="width: 6rem;">No</div></td>
+                }
+                @*@Html.DisplayFor(modelItem => item.Patient.HadVirus)*@
+                @if (item.Patient.HadVirus == true)
+                {
+                    @*<td class="text-warning"><b>Yes</b></td>*@
+                    <td><div class="badge bg-warning text-wrap" style="width: 6rem;">Yes</div></td>
+                }
+                @if (item.Patient.HadVirus == false)
+                {
+                    <td>No</td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicare)
+                </td>
+                <td><a class="text-primary text-decoration-none" asp-page="/BookAppointments/Details" asp-route-Id="@item.BookAppointmentID">Details</a></td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+@if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government") || Model.User.IsInRole("Medical"))
+{
+    <div class="badge bg-success text-wrap fs-5" style="width: 20rem;">Appointments</div>
+    <table class="font-monospace table table-success table-striped table-hover col-md-10">
+        <tr>
+            <th>Full Name</th>
+            <th>Mobile</th>
+            <th>Shot date</th>
+            <th>Vaccine Num</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.MedicalInstitution.Appointment)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookAppointment.Patient.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookAppointment.Patient.MobilePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vaccine.Number)
+                </td>
+                <td><a class="text-primary text-decoration-none" asp-page="/Appointments/Details" asp-route-Id="@item.AppointmentID">Details</a></td>
+            </tr>
+        }
+    </table>
+}
+
+
+@if (Model.Appointments != null && Model.Appointments.Count() != 0 || Model.User.IsInRole("Patient"))
+{
+    <div class="badge bg-success text-wrap fs-5" style="width: 20rem;">Appointments</div>
+    <table class="font-monospace table table-success table-striped table-hover col-md-10">
+        <tr>
+            <th>Full Name</th>
+            <th>Mobile</th>
+            <th>Shot date</th>
+            <th>Vaccine Num</th>
+        </tr>
+        @foreach (var item in Model.Appointments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookAppointment.Patient.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookAppointment.Patient.MobilePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vaccine.Number)
+                </td>
+                <td><a class="text-primary text-decoration-none" asp-page="/Appointments/Details" asp-route-Id="@item.AppointmentID">Details</a></td>
+            </tr>
+        }
+    </table>
+    @*}*@
+}
 
     <div>
-        <b><a asp-page="/BookAppointments/Create" asp-route-Id="@Model.MedicalInstitution.ID">Book an appointment</a></b>
+        <a class="btn btn-primary" role="button" asp-page="./Index">Back to List</a>
     </div>
-    <hr />
-    @*@if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government") || Model.User.IsInRole("Medical"))
-        {*@
-    @if (Model.BookAppointments != null && Model.BookAppointments.Count != 0)
-    {
-        <div><b>Booked Appointments</b></div>
-        <dl class="row">
-            <dd class="col-sm-10">
-                <table class="table">
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Eligibility To Vaccine</th>
-                        <th>Had virus before?</th>
-                        <th>Medicare</th>
-                    </tr>
-                    @foreach (var item in Model.BookAppointments)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Patient.FullName)
-                            </td>
-                            @*@Html.DisplayFor(modelItem => item.EligibilityToVaccine)*@
-                            @if (item.EligibilityToVaccine == true)
-                            {
-                                <td>Yes</td>
-                            }
-                            @if (item.EligibilityToVaccine == false)
-                            {
-                                <td><div class="badge bg-primary text-wrap" style="width: 6rem;">No</div></td>
-                            }
-                            @*@Html.DisplayFor(modelItem => item.Patient.HadVirus)*@
-                            @if (item.Patient.HadVirus == true)
-                            {
-                                @*<td class="text-warning"><b>Yes</b></td>*@
-                                <td><div class="badge bg-warning text-wrap" style="width: 6rem;">Yes</div></td>
-                            }
-                            @if (item.Patient.HadVirus == false)
-                            {
-                                <td>No</td>
-                            }
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Medicare)
-                            </td>
-                            <td><a asp-page="/BookAppointments/Details" asp-route-Id="@item.BookAppointmentID">Details</a></td>
-                        </tr>
-                    }
-                </table>
-            </dd>
-        </dl>
-    }
-
-
-    @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government") || Model.User.IsInRole("Medical"))
-    {
-        <div><b>Appointments</b><br /></div>
-        <dl class="row">
-            <dd class="col-sm-10">
-                <table class="table">
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Mobile</th>
-                        <th>Shot date</th>
-                        <th>Vaccine Num</th>
-                    </tr>
-                    @foreach (var item in Model.MedicalInstitution.Appointment)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.BookAppointment.Patient.FullName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.BookAppointment.Patient.MobilePhone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AppointmentDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Vaccine.Number)
-                            </td>
-                            <td><a asp-page="/Appointments/Details" asp-route-Id="@item.AppointmentID">Details</a></td>
-                        </tr>
-                    }
-                </table>
-            </dd>
-        </dl>
-        <hr />
-    }
-
-    @*}*@
-
-</div>
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>

@@ -6,34 +6,31 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h4 class="display-4">Alert Details</h4>
+    <hr class="my-4">
+</div>
 
-<div>
-    <h4>Alert</h4>
-    <hr />
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Alert.Comment)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Alert.Comment)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Alert.DangerousCase)
-        </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Alert.DangerousCase.Email)
+            @Html.DisplayNameFor(model => model.Alert.DangerousCase.ConfirmDate)
         </dd>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Alert.DangerousCase.FullName)
+            @Html.DisplayFor(model => model.Alert.DangerousCase.ConfirmDate)
         </dd>
-
     </dl>
 </div>
 
 @if (Model.Alert.DangerousCase.VisitedPlaces != null && Model.Alert.DangerousCase.VisitedPlaces.Count != 0)
 {
-<div class="badge bg-danger text-wrap fs-5" style="width: 16rem;">Visited Addresses Added Manually</div>
+<div class="badge bg-danger text-wrap fs-5" style="width: 16rem;">Visited Addresses</div>
 <table class="font-monospace table table-danger table-striped table-hover col-md-10">
     <tr>
         <th>Date of Visit</th>
@@ -73,8 +70,6 @@
 </table>
 }
 
-
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Alert.AlertID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-primary" role="button"  asp-page="./Index">Back to List</a>
 </div>

@@ -5,83 +5,85 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h1 class="display-4">Booked Appointment</h1>
+    <hr class="my-4">
+</div>
 
-<div>
-    <h4>BookAppointment</h4>
-    <hr />
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.LastName)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.BookAppointment.Patient.LastName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.FirstMidName)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.BookAppointment.Patient.FirstMidName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.HadVirus)
         </dt>
         @if (Model.BookAppointment.Patient.HadVirus == true)
         {
-            <dd class="col-sm-10"><label class="badge bg-warning text-wrap" style="width: 6rem;">Yes</label></dd>
+            <dd class="col-sm-9"><label class="badge bg-warning text-wrap" style="width: 6rem;">Yes</label></dd>
         }
         @if (Model.BookAppointment.Patient.HadVirus == false)
         {
-            <dd class="col-sm-10">No</dd>
+            <dd class="col-sm-9">No</dd>
         }
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.MobilePhone)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.BookAppointment.Patient.MobilePhone)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.Email)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.BookAppointment.Patient.Email)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.DOB)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.BookAppointment.Patient.DOB)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.EligibilityToVaccine)
         </dt>
         @if (Model.BookAppointment.EligibilityToVaccine == true)
         {
-            <dd class="col-sm-10">Yes</dd>
+            <dd class="col-sm-9">Yes</dd>
         }
         @if (Model.BookAppointment.EligibilityToVaccine == false)
         {
-            <dd class="col-sm-10"><label class="badge bg-primary text-wrap" style="width: 6rem;">Not eligible</label></dd>
+            <dd class="col-sm-9"><label class="badge bg-primary text-wrap" style="width: 6rem;">Not eligible</label></dd>
         }
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Patient.Comment)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.BookAppointment.Patient.Comment)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.BookAppointment.Medicare)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.BookAppointment.Medicare)
         </dd>
     </dl>
 </div>
+
 @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Medical"))
 {
     <div>
         <b>
-            <a asp-page="/Appointments/Create" 
+            <a class="btn btn-success" role="button" asp-page="/Appointments/Create" 
                asp-route-bookid="@Model.BookAppointment.BookAppointmentID"
                asp-route-medicalid="@Model.BookAppointment.MedicalInstitutionID"
                asp-route-lastname="@Model.BookAppointment.Patient.LastName"
@@ -104,5 +106,5 @@
 
 <hr />
 <div>
-    <a asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.BookAppointment.MedicalInstitutionID">Back to Medical Place</a>
+    <a class="btn btn-primary" role="button" asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.BookAppointment.MedicalInstitutionID">Back to Medical Place</a>
 </div>

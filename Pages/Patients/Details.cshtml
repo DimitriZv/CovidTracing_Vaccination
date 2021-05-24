@@ -5,97 +5,100 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h1 class="display-4">Patient Details</h1>
+    <hr class="my-4">
+</div>
 
-<div>
-    <h4>Patient</h4>
-    <hr />
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Patient.MobilePhone)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Patient.MobilePhone)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Patient.LastName)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Patient.LastName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Patient.FirstMidName)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Patient.FirstMidName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Patient.Email)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Patient.Email)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Patient.DOB)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Patient.DOB)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Patient.HadVirus)
         </dt>
         @if (Model.Patient.HadVirus == true)
         {
-            <dd class="col-sm-10">Yes</dd>
+            <dd class="col-sm-9">Yes</dd>
         }
         @if (Model.Patient.HadVirus == false)
         {
-            <dd class="col-sm-10">No</dd>
+            <dd class="col-sm-9">No</dd>
         }
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Patient.Comment)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Patient.Comment)
         </dd>
+</dl>
+ </div>
         @if (Model.Patient.Vaccines != null && Model.Patient.Vaccines.Count != 0)
         {
-            <dd class="col-sm-10">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Numbe</th>
-                            <th>Production Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Patient.Vaccines)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Number)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductionDate)
-                                </td>
-                                <td>
-                                    <a asp-page="/Vaccines/Details" asp-route-id="@item.VaccineID">Details</a> |
-                                    @*<a asp-page="./Edit" asp-route-id="@item.VaccineID">Edit</a> |
-                                    <a asp-page="./Delete" asp-route-id="@item.VaccineID">Delete</a>*@
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </dd>
+<div class="badge bg-warning text-wrap fs-5" style="width: 20rem;">Vaccines</div>
+<table class="font-monospace table table-warning table-striped table-hover col-md-10">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Numbe</th>
+            <th>Production Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Patient.Vaccines)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductionDate)
+                </td>
+                <td>
+                    <a class="text-primary text-decoration-none" asp-page="/Vaccines/Details" asp-route-id="@item.VaccineID">Details</a>
+                    @*<a asp-page="./Edit" asp-route-id="@item.VaccineID">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.VaccineID">Delete</a>*@
+                </td>
+            </tr>
         }
-    </dl>
-</div>
+    </tbody>
+</table>
+        }
+
+
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Patient.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-primary" role="button" asp-page="./Edit" asp-route-id="@Model.Patient.ID">Edit</a> |
+    <a class="btn btn-primary" role="button" asp-page="./Index">Back to List</a>
 </div>

@@ -29,7 +29,9 @@ namespace Project334.Pages.Alerts
             }
 
             Alert = await _context.Alerts
-                .Include(a => a.DangerousCase).FirstOrDefaultAsync(m => m.AlertID == id);
+                .Include(a => a.DangerousCase)
+                    .ThenInclude(s => s.VisitedPlaces)
+                .FirstOrDefaultAsync(m => m.AlertID == id);
 
             if (Alert == null)
             {

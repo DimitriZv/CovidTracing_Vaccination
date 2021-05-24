@@ -23,7 +23,9 @@ namespace Project334.Pages.CheckIns
 
         public async Task OnGetAsync()
         {
-            VisitorCheckIn = await _context.VisitorsCheckIn.ToListAsync();
+            VisitorCheckIn = await _context.VisitorsCheckIn
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

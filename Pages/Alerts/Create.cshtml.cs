@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using Project334.Models;
 
 namespace Project334.Pages.Alerts
 {
+    [Authorize(Roles = "Admin,Government")]
     public class CreateModel : PageModel
     {
         private readonly Project334.Data.Project334Context _context;
@@ -27,8 +29,7 @@ namespace Project334.Pages.Alerts
 
         [BindProperty]
         public Alert Alert { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

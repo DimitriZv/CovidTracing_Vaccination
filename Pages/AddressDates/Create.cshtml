@@ -6,12 +6,15 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-6">
+        <h4 class="display-4">Add Address</h4>
+        <hr class="my-4">
+    </div>
+</div>
 
-<h4>AddressDate</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-6">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -20,9 +23,9 @@
                 <span asp-validation-for="AddressDate.DangerousCaseID" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="AddressDate.DangerousCaseID" class="control-label"></label>
-                <select asp-for="AddressDate.DangerousCaseID" class ="form-control" asp-items="ViewBag.DangerousCaseID"></select>
-            </div>*@
+                    <label asp-for="AddressDate.DangerousCaseID" class="control-label"></label>
+                    <select asp-for="AddressDate.DangerousCaseID" class ="form-control" asp-items="ViewBag.DangerousCaseID"></select>
+                </div>*@
             <div class="form-group">
                 <label asp-for="AddressDate.StreetNumber" class="control-label"></label>
                 <input asp-for="AddressDate.StreetNumber" class="form-control" />
@@ -49,24 +52,27 @@
                 <span asp-validation-for="AddressDate.ZipCode" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="AddressDate.Country" class="control-label"></label>
-                <input asp-for="AddressDate.Country" class="form-control" />
-                <span asp-validation-for="AddressDate.Country" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="AddressDate.Country" class="control-label"></label>
+                    <input asp-for="AddressDate.Country" class="form-control" />
+                    <span asp-validation-for="AddressDate.Country" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="AddressDate.DateOfVisit" class="control-label"></label>
                 <input type="datetime" asp-for="AddressDate.DateOfVisit" placeholder="dd/MM/yyyy HH:mm" class="form-control" />
                 <span asp-validation-for="AddressDate.DateOfVisit" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="/DangerousCases/Details" asp-route-id=@ViewContext.HttpContext.Request.Query["id"]>Back to Dangerous Case</a>
+<div class="d-flex justify-content-center">
+    <div class="col-md-6">
+        <a class="btn btn-primary" role="button" asp-page="/DangerousCases/Details" asp-route-id=@ViewContext.HttpContext.Request.Query["id"]>Back to Dangerous Case</a>
+    </div>
 </div>
 
 @section Scripts {

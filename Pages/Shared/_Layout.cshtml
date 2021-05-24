@@ -19,51 +19,52 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <partial name="_LoginPartial" />
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/MedicalInstitutions/Index">Hospitals</a>
-                        </li>
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/AddressDates/Index">AddressDates</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Vaccines/Index">Vaccine</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Patients/Index">Patients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/BookAppointments/Index">Book Apps</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Appointments/Index">Apps</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/CheckIns/Index">Visitors CheckIn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/CheckOuts/Index">Visitors CheckOut</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/BusinessActivities/Index">Business Activities</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Addresses/Index">Addresses</a>
-                        </li>*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Alerts/Index">Alerts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Vaccines/Index">Vaccine</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Patients/Index">Patients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/DangerousCases/Index">Dangerous Cases</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Businesses/Index">Businesses</a>
-                        </li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Medical"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Businesses/Index">Businesses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/MedicalInstitutions/Index">Hospitals</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Vaccines/Index">Vaccine</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/DangerousCases/Index">Dangerous Cases</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/AddressDates/Index">Covid Addresses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Patients/Index">Patients</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Alerts/Index">Alerts</a>
+                            </li>
+
+                        }
+                        else if (User.IsInRole("Bussiness"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Businesses/Index">Businesses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/MedicalInstitutions/Index">Hospitals</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Alerts/Index">Alerts</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/MedicalInstitutions/Index">Hospitals</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Alerts/Index">Alerts</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

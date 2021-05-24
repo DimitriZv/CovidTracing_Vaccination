@@ -6,38 +6,149 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h4 class="display-4">Alerts</h4>
+    @if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Medical"))
+    {
+        <a class="btn btn-danger" role="button" asp-page="Create">Add Alert</a>
+    }
+    <hr class="my-4">
+</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
+@*<div class="badge bg-danger text-wrap fs-5" style="width: 20rem;">Dangerous Addresses</div>
+    <table class="font-monospace table table-danger table-striped table-hover col-md-10">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Alert[0].Comment)
+                </th>
+                <th>
+                    Dangerous Case Date
+                </th>
+                <th>Visited Places</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Alert)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DangerousCase.ConfirmDate)
+                    </td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Medical"))
+                    {
+                        <td>
+                            <a class="text-primary text-decoration-none" asp-page="./Edit" asp-route-id="@item.AlertID">Edit</a> |
+                            <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.AlertID">Details</a> |
+                            <a class="text-primary text-decoration-none" asp-page="./Delete" asp-route-id="@item.AlertID">Delete</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.AlertID">Details</a>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var place in item.DangerousCase.VisitedPlaces)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => place.FullAddress)
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>*@
+
+
+
+@*<div class="badge bg-warning text-wrap fs-5" style="width: 20rem;">Dangerous Addresses</div>
+    @foreach (var item in Model.Alert)
+    {
+        <div class="badge bg-warning text-wrap fs-5" style="width: 20rem;">
+            Comment: @Html.DisplayFor(modelItem => item.Comment)   -   Virus Date: @Html.DisplayFor(modelItem => item.DangerousCase.ConfirmDate)
+            @if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Medical"))
+            {
+                <label>
+                    <a class="text-primary text-decoration-none" asp-page="./Edit" asp-route-id="@item.AlertID">Edit</a> |
+                    <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.AlertID">Details</a> |
+                    <a class="text-primary text-decoration-none" asp-page="./Delete" asp-route-id="@item.AlertID">Delete</a>
+                </label>
+            }
+            else
+            {
+                <label>
+                    <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.AlertID">Details</a>
+                </label>
+            }
+        </div>
+        @foreach (var place in item.DangerousCase.VisitedPlaces)
+        {
+            <p>
+                @Html.DisplayFor(modelItem => place.FullAddress)
+            </p>
+        }
+    }*@
+
+
+<div class="badge bg-danger text-wrap fs-5" style="width: 20rem;">Dangerous Addresses</div>
+<table class="font-monospace table table-danger table-striped table-hover col-md-10">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Alert[0].Comment)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Alert[0].DangerousCase)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Alert[0].DangerousCase.ConfirmDate)
+                </a>
             </th>
+            <th>Visited Places</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Alert) {
+        @foreach (var item in Model.Alert)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Comment)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DangerousCase.Email)
+                @Html.DisplayFor(modelItem => item.DangerousCase.ConfirmDate)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.AlertID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.AlertID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.AlertID">Delete</a>
+                @foreach (var place in item.DangerousCase.VisitedPlaces)
+                {
+                <table>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => place.DateOfVisit) - @Html.DisplayFor(modelItem => place.FullAddress)</td>
+                    </tr>
+                </table>
+
+                }
             </td>
+            @if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Medical"))
+            {
+                <td>
+                    <a class="text-primary text-decoration-none" asp-page="./Edit" asp-route-id="@item.AlertID">Edit</a> |
+                    <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.AlertID">Details</a> |
+                    <a class="text-primary text-decoration-none" asp-page="./Delete" asp-route-id="@item.AlertID">Delete</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.AlertID">Details</a>
+                </td>
+            }
         </tr>
-}
+        }
     </tbody>
 </table>

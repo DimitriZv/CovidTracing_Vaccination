@@ -23,7 +23,9 @@ namespace Project334.Pages.AddressDates
 
         public async Task OnGetAsync()
         {
-            AddressDate = await _context.AddressDates.ToListAsync();
+            AddressDate = await _context.AddressDates
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

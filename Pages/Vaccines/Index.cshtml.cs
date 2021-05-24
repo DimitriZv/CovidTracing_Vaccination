@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Project334.Models;
 
 namespace Project334.Pages.Vaccines
 {
+    [Authorize(Roles = "Admin,Medical,Government")]
     public class IndexModel : PageModel
     {
         private readonly Project334.Data.Project334Context _context;
@@ -23,7 +25,9 @@ namespace Project334.Pages.Vaccines
 
         public async Task OnGetAsync()
         {
-            Vaccine = await _context.Vaccines.ToListAsync();
+            Vaccine = await _context.Vaccines
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

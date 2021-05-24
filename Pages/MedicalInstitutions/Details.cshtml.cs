@@ -24,6 +24,7 @@ namespace Project334.Pages.MedicalInstitutions
 
         public MedicalInstitution MedicalInstitution { get; set; }
         public IList<BookAppointment> BookAppointments { get; set; }
+        public IList<Appointment> Appointments { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,6 +32,9 @@ namespace Project334.Pages.MedicalInstitutions
             {
                 return NotFound();
             }
+
+            IQueryable<Appointment> appointmentsQ = from s in _context.Appointments
+                                                    select s;
 
             var userName = User.FindFirstValue(ClaimTypes.Name); //should be an email
 
@@ -57,6 +61,13 @@ namespace Project334.Pages.MedicalInstitutions
                 .Where(h => h.MedicalInstitutionID == id)
                 .Where(f => f.Patient.Email == userName)
                 .ToListAsync();
+
+                appointmentsQ = appointmentsQ
+                    .Include(d => d.BookAppointment)
+                        .ThenInclude(k => k.Patient)
+                        .Where(s => s.BookAppointment.Patient.Email.ToUpper().Contains(userName.ToUpper()))
+                    .Include(l => l.Vaccine);
+                Appointments = await appointmentsQ.AsNoTracking().ToListAsync();
 
                 MedicalInstitution = await _context.MedicalInstitutions
                  .AsNoTracking()

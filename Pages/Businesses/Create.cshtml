@@ -5,10 +5,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+     <h4 class="display-4">Add Business</h4>
+    <hr class="my-4">
+</div>
 
-<h4>Business</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
@@ -60,7 +61,7 @@
                 <input asp-for="Business.ZipCode" class="form-control" />
                 <span asp-validation-for="Business.ZipCode" class="text-danger"></span>
             </div>
-
+            <br />
             @*<div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

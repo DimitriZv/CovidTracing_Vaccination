@@ -13,18 +13,46 @@ namespace Project334.Pages.Alerts
     public class IndexModel : PageModel
     {
         private readonly Project334.Data.Project334Context _context;
-
+        
         public IndexModel(Project334.Data.Project334Context context)
         {
             _context = context;
         }
-
+        
+        public string DateSort { get; set; }
+        public string CurrentFilter { get; set; }
         public IList<Alert> Alert { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
-            Alert = await _context.Alerts
-                .Include(a => a.DangerousCase).ToListAsync();
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
+            IQueryable<Alert> alertsIQ = from s in _context.Alerts
+                                         select s;
+
+            switch (sortOrder)
+            {
+                case "Date":
+                    alertsIQ = alertsIQ.OrderBy(s => s.DangerousCase.ConfirmDate);
+                    break;
+                case "date_desc":
+                    alertsIQ = alertsIQ.OrderByDescending(s => s.DangerousCase.ConfirmDate);
+                    break;
+                default:
+                    alertsIQ = alertsIQ.OrderBy(s => s.DangerousCase.ConfirmDate);
+                    break;
+            }
+
+            Alert = await alertsIQ.Include(a => a.DangerousCase)
+                                    .ThenInclude(s => s.VisitedPlaces)
+                                    .AsNoTracking()
+                                    .ToListAsync();
+
+            /*Alert = await _context.Alerts
+                .Include(a => a.DangerousCase)
+                    .ThenInclude(s => s.VisitedPlaces)
+                .AsNoTracking()
+                .ToListAsync();*/
         }
     }
 }

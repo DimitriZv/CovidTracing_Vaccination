@@ -5,111 +5,120 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
+    <h1 class="display-4">Appointment Details</h1>
+    <hr class="my-4">
+</div>
 
-<div>
-    <h4>Appointment</h4>
-    <hr />
+<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.BookAppointment.Patient.FullName)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.BookAppointment.Patient.FullName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.BookAppointment.Patient.MobilePhone)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.BookAppointment.Patient.MobilePhone)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.BookAppointment.Patient.Email)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.BookAppointment.Patient.Email)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.BookAppointment.Patient.HadVirus)
         </dt>
-            @*@Html.DisplayFor(model => model.Appointment.BookAppointment.Patient.HadVirus)*@
-            @if (Model.Appointment.BookAppointment.Patient.HadVirus == true)
-            {
-                <dd class="col-sm-10">Had Virus</dd>
-            }
-            @if (Model.Appointment.BookAppointment.Patient.HadVirus == false)
-            {
-                <dd class="col-sm-10">No Virus</dd>
-            }
+        @*@Html.DisplayFor(model => model.Appointment.BookAppointment.Patient.HadVirus)*@
+        @if (Model.Appointment.BookAppointment.Patient.HadVirus == true)
+        {
+            <dd class="col-sm-9">Had Virus</dd>
+        }
+        @if (Model.Appointment.BookAppointment.Patient.HadVirus == false)
+        {
+            <dd class="col-sm-9">No Virus</dd>
+        }
 
     </dl>
-        <hr />
+    <hr />
 
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.BookAppointment.Medicare)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.BookAppointment.Medicare)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.BookAppointment.EligibilityToVaccine)
         </dt>
-            @*Html.DisplayFor(model => model.Appointment.BookAppointment.EligibilityToVaccine)*@
-            @if (Model.Appointment.BookAppointment.EligibilityToVaccine == true)
-            {
-                <dd class="col-sm-10"><b>Eligible by <a href="https://covid-vaccine.healthdirect.gov.au/eligibility">link</a></b></dd>
-            }
-            @if (Model.Appointment.BookAppointment.EligibilityToVaccine == false)
-            {
-                <dd class="col-sm-10"><b>Not eligible by <a href="https://covid-vaccine.healthdirect.gov.au/eligibility">link</a></b></dd>
-            }
+        @*Html.DisplayFor(model => model.Appointment.BookAppointment.EligibilityToVaccine)*@
+        @if (Model.Appointment.BookAppointment.EligibilityToVaccine == true)
+        {
+            <dd class="col-sm-9">Eligible by <a href="https://covid-vaccine.healthdirect.gov.au/eligibility">link</a></dd>
+        }
+        @if (Model.Appointment.BookAppointment.EligibilityToVaccine == false)
+        {
+            <dd class="col-sm-9"><b>Not eligible by <a href="https://covid-vaccine.healthdirect.gov.au/eligibility">link</a></b></dd>
+        }
     </dl>
-        <hr />
+    <hr />
 
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.AppointmentDate)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.AppointmentDate)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.EligibilityToVaccine)
         </dt>
-            @*@Html.DisplayFor(model => model.Appointment.EligibilityToVaccine)*@
-            @if (Model.Appointment.EligibilityToVaccine == true)
-            {
-                <dd class="col-sm-10"><b>Eligible by medical staff</b></dd>
-            }
-            @if (Model.Appointment.EligibilityToVaccine == false)
-            {
-                <dd class="col-sm-10"><b>No eligible by medical staff</b></dd>
-            }
+        @*@Html.DisplayFor(model => model.Appointment.EligibilityToVaccine)*@
+        @if (Model.Appointment.EligibilityToVaccine == true)
+        {
+            <dd class="col-sm-9 text-success fw-bold">Eligible by medical staff</dd>
+        }
+        @if (Model.Appointment.EligibilityToVaccine == false)
+        {
+            <dd class="col-sm-9 text-success fw-bold">No eligible by medical staff</dd>
+        }
     </dl>
-        <hr />
+    <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.Vaccine.Name)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.Vaccine.Name)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.Vaccine.Number)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.Vaccine.Number)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Appointment.Vaccine.ProductionDate)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Appointment.Vaccine.ProductionDate)
+        </dd>
+        <dt class="col-sm-3">
+            Link
+        </dt>
+        <dd class="col-sm-9">
+            <a class="btn btn-success" role="button" asp-page="/Vaccines/Details" asp-route-id="@Model.Appointment.Vaccine.VaccineID">Vaccine Certificate</a>
         </dd>
     </dl>
     <hr />
 </div>
+
+
 <div>
-    <a asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.Appointment.MedicalInstitutionID">Back to Medical Place</a>
+    <a class="btn btn-primary" role="button" asp-page="/MedicalInstitutions/Details" asp-route-id="@Model.Appointment.MedicalInstitutionID">Back to Medical Place</a>
 </div>
