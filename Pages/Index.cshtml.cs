@@ -43,6 +43,8 @@ namespace Project334.Pages
         public int DangCaseCountQLD { get; set; }
         public int DangCaseCountSA { get; set; }
         public int DangCaseCountVIC { get; set; }
+        public int DangCaseCountTAS { get; set; }
+        public int DangCaseCountNT { get; set; }
 
         public async Task OnGetAsync(string searchString, string category)
         {
@@ -111,6 +113,8 @@ namespace Project334.Pages
             DangCaseCountACT = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("ACT"));
             DangCaseCountQLD = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("QLD"));
             DangCaseCountWA = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("WA"));
+            DangCaseCountTAS = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("TAS"));
+            DangCaseCountNT = dangerousCaseIQ.Count(s => s.State.ToUpper().Contains("NT"));
             DangCaseCount = dangerousCaseIQ.Count();
         }
     }

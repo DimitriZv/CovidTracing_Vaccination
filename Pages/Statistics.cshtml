@@ -4,56 +4,500 @@
     ViewData["Title"] = "Statistics";
 }
 
+@section Styles {
+    <link href="@Url.Content("~/css/statistics.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="one" class="col-md-2">
+    <table class="font-monospace table table-info table-striped table-hover">
+        <tr>
+            <th>City</th>
+            <th>Cases</th>
+        </tr>
+        <tr>
+            <td>
+                Melbourne
+            </td>
+            <td>
+                @Model.MelDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Sydney
+            </td>
+            <td>
+                @Model.SydDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Brisbane
+            </td>
+            <td>
+                @Model.BriDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Perth
+            </td>
+            <td>
+                @Model.PerthDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Adelaide
+            </td>
+            <td>
+                @Model.AdelaidDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Goald Coast
+            </td>
+            <td>
+                @Model.GoaldCoastDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Newcastle
+            </td>
+            <td>
+                @Model.NewcastDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Canberra
+            </td>
+            <td>
+                @Model.CanberraDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Sunshine Coast
+            </td>
+            <td>
+                @Model.SunshineCoastCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Central Coast
+            </td>
+            <td>
+                @Model.CentralCoastDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Wollongong
+            </td>
+            <td>
+                @Model.WolongDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Gelong
+            </td>
+            <td>
+                @Model.GelongDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Hobart
+            </td>
+            <td>
+                @Model.HobartDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Townsville
+            </td>
+            <td>
+                @Model.TownsvilleDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cairns
+            </td>
+            <td>
+                @Model.CairnsDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Toowoomba
+            </td>
+            <td>
+                @Model.ToowoombaDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Darwin
+            </td>
+            <td>
+                @Model.DarwinDangCaseCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Ballarat
+            </td>
+            <td>
+                @Model.BallaratDangCaseCount
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="two" class="col-md-2">
+    <ol class="list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases</div>
+                Australia
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCount</span>
+        </div>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases NSW</div>
+                New South Wales
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountNSW</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases VIC</div>
+                Victoria
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountVIC</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases QLD</div>
+                Queensland
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountQLD</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases ACT</div>
+                Capital Territory
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountACT</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases SA</div>
+                South Australia
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountSA</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases WA</div>
+                Western Australia
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountWA</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases NT</div>
+                Northern Territories
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountNT</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cases TAS</div>
+                Tasmania
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountTAS</span>
+        </li>
+    </ol>
+</div>
+
+<div class="row">
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases NSW</div>
+                New South Wales
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountNSW</span>
+        </div>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Sydney</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.SydDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Newcastle</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.NewcastDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Central Coast</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.WolongDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Wollongong</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.WolongDangCaseCount</span>
+        </li>
+    </ol>
 
 
-<ol class="col-md-2 list-group list-group-numbered">
-    <li class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
-          <div class="ms-3 me-auto">
-             <div class="fw-bold">Total cases</div>
-              Australia
-          </div>
-        <span class="badge bg-success rounded-pill">@Model.DangCaseCount</span>
-    </li>
-    <li class="list-group-item d-flex align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Cases NSW</div>
-            New South Wales
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases QLD</div>
+                Queensland
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountQLD</span>
         </div>
-        <span class="badge bg-primary rounded-pill">@Model.DangCaseCountNSW</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Cases VIC</div>
-            Victoria
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Brisbane</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.BriDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Goald Coast</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.GoaldCoastDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Sunshine Coast</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.SunshineCoastCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Townsville</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.TownsvilleDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Cairns</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.CairnsDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Toowoomba</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.ToowoombaDangCaseCount</span>
+        </li>
+    </ol>
+
+
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases VIC</div>
+                Victoria
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountVIC</span>
         </div>
-        <span class="badge bg-primary rounded-pill">@Model.DangCaseCountVIC</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Cases QLD</div>
-            Queensland
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Melbourne</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.MelDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Gelong</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.GelongDangCaseCount</span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Ballarat</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.BallaratDangCaseCount</span>
+        </li>
+    </ol>
+</div>
+<br />
+
+<div class="row">
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases ACT</div>
+                Capital Territory
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountACT</span>
         </div>
-        <span class="badge bg-primary rounded-pill">@Model.DangCaseCountQLD</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Cases ACT</div>
-            Capital Territory
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Canberra</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.CanberraDangCaseCount</span>
+        </li>
+    </ol>
+
+
+
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases SA</div>
+                South Australia
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountSA</span>
         </div>
-        <span class="badge bg-primary rounded-pill">@Model.DangCaseCountACT</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Cases SA</div>
-            South Australia
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Adelaide</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.AdelaidDangCaseCount</span>
+        </li>
+    </ol>
+
+
+
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases WA</div>
+                Western Australia
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountWA</span>
         </div>
-        <span class="badge bg-primary rounded-pill">@Model.DangCaseCountWA</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Cases WA</div>
-            Western Australia
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Perth</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.PerthDangCaseCount</span>
+        </li>
+    </ol>
+</div>
+
+<br />
+
+<div class="row">
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases NT</div>
+                Northern Territories
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountNT</span>
         </div>
-        <span class="badge bg-primary rounded-pill">@Model.DangCaseCountWA</span>
-    </li>
-</ol>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Darwin</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.DarwinDangCaseCount</span>
+        </li>
+    </ol>
+
+    <ol class="col-md-4 list-group list-group-numbered">
+        <div class="list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total cases TAS</div>
+                Tasmania
+            </div>
+            <span class="badge bg-success rounded-pill">@Model.DangCaseCountTAS</span>
+        </div>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Hobart</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.HobartDangCaseCount</span>
+        </li>
+    </ol>
+</div>
+
+<hr />
+
+<div class="row">
+    <ol class="col-md-3 list-group list-group-numbered">
+        <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+            <div class="ms-3 me-auto">
+                <div class="fw-bold">Total Vaccines</div>
+                Australia
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.VaccinesDone</span>
+        </div>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines NSW</div>
+                New South Wales
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneNSW</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines VIC</div>
+                Victoria
+            </div>
+            <span class="badge bg-primary rounded-pill"></span>
+        </li>
+        <li class="list-group-item d-flex align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines QLD</div>
+                Queensland
+            </div>
+            <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneQLD</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines ACT</div>
+                Capital Territory
+            </div>
+            <span class="badge bg-primary rounded-pill"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines SA</div>
+                South Australia
+            </div>
+            <span class="badge bg-primary rounded-pill"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines WA</div>
+                Western Australia
+            </div>
+            <span class="badge bg-primary rounded-pill"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines NT</div>
+                Northern Territories
+            </div>
+            <span class="badge bg-primary rounded-pill"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Vaccines TAS</div>
+                Tasmania
+            </div>
+            <span class="badge bg-primary rounded-pill"></span>
+        </li>
+    </ol>
+</div>

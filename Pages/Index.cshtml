@@ -4,103 +4,118 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="row">
-    <div id="carouselExampleFade" class="m-xxl-auto col-md-10 carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    <div class="row">
+        <div class="col-md-10">
+            <div id="carouselExampleFade" class="@*m-xxl-auto*@ carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" role="listbox" style=" width:100%; height: 510px !important;">
+                        <img src="~/images/contact1.png" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item" role="listbox" style=" width:100%; height: 510px !important;">
+                        <img src="~/images/vaccine2.jpg" class="d-block w-100 rounded" alt="...">
+                    </div>
+                    <div class="carousel-item" role="listbox" style=" width:100%; height: 510px !important;">
+                        <img src="~/images/contact2.jpg" class="d-block w-100 rounded" alt="...">
+                    </div>
+                    <div class="carousel-item" role="listbox" style=" width:100%; height: 510px !important;">
+                        <img src="~/images/contact4.jpg" class="d-block w-100 rounded" alt="...">
+                    </div>
+                    <div class="carousel-item" role="listbox" style=" width:100%; height: 510px !important;">
+                        <img src="~/images/vaccine1.jpg" class="d-block w-100 rounded" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div class="progress" style="height: 2rem">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%; height: 2rem">
+                    <a class="text-danger fs-5 text fw-bold text-decoration-none" asp-page="/Alerts/Index">Addresses with positive COVID tests</a>
+                </div>
+            </div>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" role="listbox" style=" width:100%; height: 435px !important;">
-                <img src="~/images/contact1.png" class="d-block w-100" alt="..." />
-            </div>
-            <div class="carousel-item" role="listbox" style=" width:100%; height: 435px !important;">
-                <img src="~/images/vaccine2.jpg" class="d-block w-100 rounded" alt="...">
-            </div>
-            <div class="carousel-item" role="listbox" style=" width:100%; height: 435px !important;">
-                <img src="~/images/contact2.jpg" class="d-block w-100 rounded" alt="...">
-            </div>
-            <div class="carousel-item" role="listbox" style=" width:100%; height: 435px !important;">
-                <img src="~/images/contact4.jpg" class="d-block w-100 rounded" alt="...">
-            </div>
-            <div class="carousel-item" role="listbox" style=" width:100%; height: 435px !important;">
-                <img src="~/images/vaccine1.jpg" class="d-block w-100 rounded" alt="...">
-            </div>
+
+            <ol class="col-md-2 list-group list-group-numbered">
+                <a href="Statistics" class="link-warning list-group-item active d-flex justify-content-between align-items-start" data-bs-toggle="tooltip" data-bs-placement="top" title="See All Statistic" aria-current="true">
+                    <div class="ms-3 me-auto">
+                        <div class="fw-bold">Total cases</div>
+                        Australia
+                    </div>
+                    <span class="badge bg-success rounded-pill">@Model.DangCaseCount</span>
+                </a>
+
+                <li class="list-group-item d-flex align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases NSW</div>
+                        New South Wales
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountNSW</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases VIC</div>
+                        Victoria
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountVIC</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases QLD</div>
+                        Queensland
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountQLD</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases ACT</div>
+                        Capital Territory
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountACT</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases SA</div>
+                        South Australia
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountSA</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases WA</div>
+                        Western Australia
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountWA</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases NT</div>
+                        Northern Territ.
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountNT</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cases TAS</div>
+                        Tasmania
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@Model.DangCaseCountTAS</span>
+                </li>
+            </ol>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <ol class="col-md-2 list-group list-group-numbered">
-        <a href="Statistics" class="link-warning list-group-item active d-flex justify-content-between align-items-start" data-bs-toggle="tooltip" data-bs-placement="top" title="See All Statistic" aria-current="true">
-            <div class="ms-3 me-auto">
-                <div class="fw-bold">Total cases</div>
-                Australia
-            </div>
-            <span class="badge bg-success rounded-pill">@Model.DangCaseCount</span>
-        </a>
-
-        <li class="list-group-item d-flex align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Cases NSW</div>
-                New South Wales
-            </div>
-            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountNSW</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Cases VIC</div>
-                Victoria
-            </div>
-            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountVIC</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Cases QLD</div>
-                Queensland
-            </div>
-            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountQLD</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Cases ACT</div>
-                Capital Territory
-            </div>
-            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountACT</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Cases SA</div>
-                South Australia
-            </div>
-            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountWA</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Cases WA</div>
-                Western Australia
-            </div>
-            <span class="badge bg-primary rounded-pill">@Model.DangCaseCountWA</span>
-        </li>
-    </ol>
-    <div class="progress col-md-10" style="height: 1.3rem">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
-             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%; height: 1.3rem">
-            <a class="text-danger fs-6 text fw-bold text-decoration-none" asp-page="/Alerts/Index">Addresses with positive COVID tests</a>
-        </div>
-    </div>
-</div>
-
-
 
     <br />  
     
