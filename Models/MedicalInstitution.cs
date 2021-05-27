@@ -25,7 +25,7 @@ namespace Project334.Models
 
         [Display(Name = "Medical name")]
         [Required(ErrorMessage = "The Company name is required")]
-        [StringLength(30)]
+        [StringLength(50)]
         public string Name { get; set; }
 
         [Display(Name = "Phone number")]

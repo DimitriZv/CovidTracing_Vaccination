@@ -29,6 +29,10 @@ namespace Project334.Pages.Alerts
 
             IQueryable<Alert> alertsIQ = from s in _context.Alerts
                                          select s;
+            IQueryable<VisitorCheckIn> visitorCheckInQ = from s in _context.VisitorsCheckIn
+                                                         select s;
+            IQueryable<VisitorCheckOut> visitorCheckOutQ = from s in _context.VisitorsCheckOut
+                                                           select s;
 
             switch (sortOrder)
             {

@@ -30,46 +30,108 @@
 
 @if (Model.Alert.DangerousCase.VisitedPlaces != null && Model.Alert.DangerousCase.VisitedPlaces.Count != 0)
 {
-<div class="badge bg-danger text-wrap fs-5" style="width: 16rem;">Visited Addresses</div>
+    <div class="badge bg-danger text-wrap fs-5" style="width: 16rem;">Visited Addresses</div>
+    <table class="font-monospace table table-danger table-striped table-hover col-md-10">
+        <tr>
+            <th>Date of Visit</th>
+            <th>Street Number</th>
+            <th>Street Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Country</th>
+        </tr>
+        @foreach (var item in Model.Alert.DangerousCase.VisitedPlaces)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfVisit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StreetNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StreetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZipCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<div class="badge bg-danger text-wrap fs-5" style="width: 20rem;">Visited Addresses Check In</div>
 <table class="font-monospace table table-danger table-striped table-hover col-md-10">
     <tr>
         <th>Date of Visit</th>
-        <th>Street Number</th>
-        <th>Street Name</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip Code</th>
-        <th>Country</th>
+        <th>Full Name</th>
+        <th>Mobile</th>
+        <th>Business Activity ID</th>
     </tr>
-    @foreach (var item in Model.Alert.DangerousCase.VisitedPlaces)
+    @foreach (var item in Model.visitorsCheckIn)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfVisit)
+                @Html.DisplayFor(modelItem => item.CheckIn)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StreetNumber)
+                @Html.DisplayFor(modelItem => item.MobilePhone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StreetName)
+                @Html.DisplayFor(modelItem => item.BusinessActivityID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZipCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
+                <a class="text-primary text-decoration-none" asp-page="/BusinessActivities/Details" asp-route-id="@item.BusinessActivityID">Visit Daily Activity</a>
             </td>
         </tr>
     }
 </table>
-}
+
+<div class="badge bg-danger text-wrap fs-5" style="width: 20rem;">Visited Addresses Check Out</div>
+<table class="font-monospace table table-danger table-striped table-hover col-md-10">
+    <tr>
+        <th>Date of Visit</th>
+        <th>Full Name</th>
+        <th>Mobile</th>
+        <th>Business Activity ID</th>
+    </tr>
+    @foreach (var item in Model.visitorsCheckOut)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessActivityID)
+            </td>
+            <td>
+                <a class="text-primary text-decoration-none" asp-page="/BusinessActivities/Details" asp-route-id="@item.BusinessActivityID">Visit Daily Activity</a>
+            </td>
+        </tr>
+    }
+</table>
 
 <div>
-    <a class="btn btn-primary" role="button"  asp-page="./Index">Back to List</a>
+    <a class="btn btn-primary" role="button" asp-page="./Index">Back to List</a>
 </div>

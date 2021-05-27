@@ -434,70 +434,500 @@
 
 <hr />
 
-<div class="row">
-    <ol class="col-md-3 list-group list-group-numbered">
-        <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
-            <div class="ms-3 me-auto">
-                <div class="fw-bold">Total Vaccines</div>
-                Australia
+
+<div id="three">
+    <div id="four">
+        <ol class="list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines</div>
+                    Australia
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDone</span>
             </div>
-            <span class="badge bg-primary rounded-pill">@Model.VaccinesDone</span>
-        </div>
-        <li class="list-group-item d-flex align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines NSW</div>
-                New South Wales
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines NSW</div>
+                    New South Wales
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneNSW</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines VIC</div>
+                    Victoria
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneVIC</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines QLD</div>
+                    Queensland
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneQLD</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines ACT</div>
+                    Capital Territory
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneACT</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines SA</div>
+                    South Australia
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneSA</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines WA</div>
+                    Western Australia
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneWA</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines NT</div>
+                    Northern Territories
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneNT</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Vaccines TAS</div>
+                    Tasmania
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneTAS</span>
+            </li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines NSW</div>
+                    New South Wales
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneNSW</span>
             </div>
-            <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneNSW</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines VIC</div>
-                Victoria
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Sydney</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.SydVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Newcastle</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.NewcastVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Central Coast</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.CentralCoastVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Wollongong</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.WolongVaccine</span>
+            </li>
+        </ol>
+
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines QLD</div>
+                    Queensland
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneQLD</span>
             </div>
-            <span class="badge bg-primary rounded-pill"></span>
-        </li>
-        <li class="list-group-item d-flex align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines QLD</div>
-                Queensland
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Brisbane</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.BriVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Goald Coast</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.GoaldCoastVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Sunshine Coast</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.SunshineCoastVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Townsville</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.TownsvilleVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Cairns</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.CairnsVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Toowoomba</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.ToowoombaVaccine</span>
+            </li>
+        </ol>
+
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines VIC</div>
+                    Victoria
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneVIC</span>
             </div>
-            <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneQLD</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines ACT</div>
-                Capital Territory
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Melbourne</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.MelVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Gelong</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.GelongVaccine</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Ballarat</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.BallaratVaccine</span>
+            </li>
+        </ol>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines ACT</div>
+                    Capital Territory
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneACT</span>
             </div>
-            <span class="badge bg-primary rounded-pill"></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines SA</div>
-                South Australia
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Canberra</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.CanberraVaccine</span>
+            </li>
+        </ol>
+
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines SA</div>
+                    South Australia
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneSA</span>
             </div>
-            <span class="badge bg-primary rounded-pill"></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines WA</div>
-                Western Australia
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Adelaide</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.AdelaidVaccine</span>
+            </li>
+        </ol>
+
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines WA</div>
+                    Western Australia
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneWA</span>
             </div>
-            <span class="badge bg-primary rounded-pill"></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines NT</div>
-                Northern Territories
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Perth</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.PerthVaccine</span>
+            </li>
+        </ol>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines NT</div>
+                    Northern Territories
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneNT</span>
             </div>
-            <span class="badge bg-primary rounded-pill"></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Vaccines TAS</div>
-                Tasmania
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Darwin</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.DarwinVaccine</span>
+            </li>
+        </ol>
+
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-success list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Vaccines TAS</div>
+                    Tasmania
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.VaccinesDoneTAS</span>
             </div>
-            <span class="badge bg-primary rounded-pill"></span>
-        </li>
-    </ol>
+            <li class="list-group-item d-flex align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Hobart</div>
+                </div>
+                <span class="badge bg-primary rounded-pill">@Model.HobartVaccine</span>
+            </li>
+        </ol>
+    </div>
+    <hr />
+</div>
+
+<div id="five" class="col-md-2">
+    <table class="font-monospace table table-success table-striped table-hover">
+        <tr>
+            <th>City</th>
+            <th>Vaccines</th>
+        </tr>
+        <tr>
+            <td>
+                Melbourne
+            </td>
+            <td>
+                @Model.MelVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Sydney
+            </td>
+            <td>
+                @Model.SydVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Brisbane
+            </td>
+            <td>
+                @Model.BriVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Perth
+            </td>
+            <td>
+                @Model.PerthVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Adelaide
+            </td>
+            <td>
+                @Model.AdelaidVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Goald Coast
+            </td>
+            <td>
+                @Model.GoaldCoastVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Newcastle
+            </td>
+            <td>
+                @Model.NewcastVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Canberra
+            </td>
+            <td>
+                @Model.CanberraVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Sunshine Coast
+            </td>
+            <td>
+                @Model.SunshineCoastVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Central Coast
+            </td>
+            <td>
+                @Model.CentralCoastVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Wollongong
+            </td>
+            <td>
+                @Model.WolongVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Gelong
+            </td>
+            <td>
+                @Model.GelongVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Hobart
+            </td>
+            <td>
+                @Model.HobartVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Townsville
+            </td>
+            <td>
+                @Model.ToowoombaVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cairns
+            </td>
+            <td>
+                @Model.CairnsVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Toowoomba
+            </td>
+            <td>
+                @Model.ToowoombaVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Darwin
+            </td>
+            <td>
+                @Model.DarwinVaccine
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Ballarat
+            </td>
+            <td>
+                @Model.BallaratVaccine
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<div id="three">
+    <div class="row">
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-info list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Medical Paces</div>
+                    Australia
+                </div>
+                <span class="badge bg-success rounded-pill">@Model.TotalHospitals</span>
+            </div>
+        </ol>
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-info list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Bussinesses</div>
+                    Australia
+                </div>
+                <span class="badge bg-success rounded-pill">@Model.TotalBussinesses</span>
+            </div>
+        </ol>
+        @*<ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-info list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Dang Addresses</div>
+                    Australia
+                </div>
+                <span class="badge bg-success rounded-pill">@Model.TotalDangAddresses</span>
+            </div>
+        </ol>*@
+            <ol class="col-md-4 list-group list-group-numbered">
+                <div class="bg-info list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                    <div class="ms-3 me-auto">
+                        <div class="fw-bold">Total Business Activities</div>
+                        Australia
+                    </div>
+                    <span class="badge bg-success rounded-pill">@Model.TotalBussActivities</span>
+                </div>
+            </ol>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-info list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total CheckIns</div>
+                    Australia
+                </div>
+                <span class="badge bg-success rounded-pill">@Model.TotalCheckIn</span>
+            </div>
+        </ol>
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-info list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total CheckOuts</div>
+                    Australia
+                </div>
+                <span class="badge bg-success rounded-pill">@Model.TotalCheckOut</span>
+            </div>
+        </ol>
+        <ol class="col-md-4 list-group list-group-numbered">
+            <div class="bg-info list-group-item active d-flex justify-content-between align-items-start" aria-current="true">
+                <div class="ms-3 me-auto">
+                    <div class="fw-bold">Total Alerts</div>
+                    Australia
+                </div>
+                <span class="badge bg-success rounded-pill">@Model.TotalAlerts</span>
+            </div>
+        </ol>
+    </div>
 </div>

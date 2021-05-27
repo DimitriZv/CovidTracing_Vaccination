@@ -1,0 +1,43 @@
+﻿@page
+@model Project334.Pages.QRCodeModel
+@{
+    ViewData["Title"] = "QRcode";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-6">
+        <h4 class="display-4">Generate QR code</h4>
+        <hr class="my-4">
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-6">
+        <form method="post" asp-page="QRCode">
+            <div class="form-group">
+                <label class="control-label">Link</label>
+                <input type="text" asp-for="@Model.link" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Generate" class="btn btn-success" />
+            </div>
+            <br />
+            @if (Model.link != null)
+            {
+                <div>
+                    <h3>QR-Code</h3>
+                    <br />
+                    <qrcode content="@Model.link" width="500px" height="500px"></qrcode>
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="col-md-6">
+        <a class="btn btn-primary" role="button" asp-page="Index">Back to Home</a>
+    </div>
+</div>

@@ -16,7 +16,7 @@ namespace Project334.Models
 
         [Display(Name = "Business Activity ID")]
         [Required(ErrorMessage = "Business Activity ID is required")]
-        [Range(1,10000)]
+        [Range(1,100000)]
         public int BusinessActivityID { get; set; }
 
         [Display(Name = "CheckIn Date Time")]

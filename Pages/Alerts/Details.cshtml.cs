@@ -20,6 +20,9 @@ namespace Project334.Pages.Alerts
         }
 
         public Alert Alert { get; set; }
+        public DangerousCase dangerousCase { get; set; }
+        public IList<VisitorCheckIn> visitorsCheckIn { get; set; }
+        public IList<VisitorCheckOut> visitorsCheckOut { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,6 +30,28 @@ namespace Project334.Pages.Alerts
             {
                 return NotFound();
             }
+
+            IQueryable<VisitorCheckIn> visitorCheckInQ = from s in _context.VisitorsCheckIn
+                                                         select s;
+            IQueryable<VisitorCheckOut> visitorCheckOutQ = from s in _context.VisitorsCheckOut
+                                                           select s;
+            IQueryable<DangerousCase> dangerousCaseQ = from s in _context.DangerousCases
+                                                       select s;
+            IQueryable<Alert> alertQ = from s in _context.Alerts
+                                                       select s;
+
+            Alert findAl = alertQ.FirstOrDefault(s => s.AlertID == id);
+            int idDang = findAl.DangerousCaseID;
+
+            DangerousCase find = dangerousCaseQ.FirstOrDefault(s => s.ID == idDang);
+            
+            string lastNameDangCase = find.LastName;
+
+            visitorCheckInQ = visitorCheckInQ.Where(s => s.LastName.ToUpper().Contains(lastNameDangCase.ToUpper()));
+            visitorsCheckIn = await visitorCheckInQ.AsNoTracking().ToListAsync();
+
+            visitorCheckOutQ = visitorCheckOutQ.Where(s => s.LastName.ToUpper().Contains(lastNameDangCase.ToUpper()));
+            visitorsCheckOut = await visitorCheckOutQ.AsNoTracking().ToListAsync();
 
             Alert = await _context.Alerts
                 .Include(a => a.DangerousCase)

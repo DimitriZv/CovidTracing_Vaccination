@@ -5,16 +5,19 @@
     ViewData["Title"] = "Create";
 }
 
-<div class="shadow p-3 m-3 bg-light rounded-lg col-md-8">
-     <h4 class="display-4">Add Business</h4>
-    <hr class="my-4">
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-6">
+        <h4 class="display-4">Add Business</h4>
+        <hr class="my-4">
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
+
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-6">
         <form method="post">
             @*<div class="col-md-4">
-        <form method="post">*@
+                <form method="post">*@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Business.Name" class="control-label"></label>
@@ -63,20 +66,23 @@
             </div>
             <br />
             @*<div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-            </form>
-        </div>
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                    </form>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
+
+<div class="d-flex justify-content-center">
+    <div class="col-md-6">
+        <a class="btn btn-primary" role="button" asp-page="Index">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {

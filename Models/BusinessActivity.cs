@@ -12,7 +12,7 @@ namespace Project334.Models
 
         [Display(Name = "Business ID")]
         [Required(ErrorMessage = "Business ID is required")]
-        [Range(1, 10000)]
+        [Range(1, 100000)]
         public int BusinessID { get; set; }
 
         [Required(ErrorMessage = "The Working Date is required")]

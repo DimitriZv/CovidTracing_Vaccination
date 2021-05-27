@@ -4,12 +4,17 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-4">
+        <h4 class="display-4">@ViewData["Title"]</h4>
+        <hr class="my-4">
+    </div>
+</div>
 
-<div class="row">
-    <div class="col-md-4">
+<div class="d-flex justify-content-center">
+    <div class="shadow p-3 m-3 bg-light rounded-lg col-md-4">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
+            <h4>Create a new account</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -29,16 +34,16 @@
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label>Roles</label>
-                <input name="selPp" class="form-control" />
-            </div>*@
+                    <label>Roles</label>
+                    <input name="selPp" class="form-control" />
+                </div>*@
             <div class="form-group">
                 <label class="control-label">Role</label>
                 <select name="selPp" class="form-control">
                     <option value="Patient">Patient</option>
                     <option value="Medical">Medical</option>
                     <option value="Bussiness">Bussiness</option>
-                    <option value="Government" >Government</option>
+                    <option value="Government">Government</option>
                 </select>
             </div>
             <div class="form-group">
@@ -51,10 +56,12 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <br />
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+</div>
+    @*<div class="col-md-6 col-md-offset-2">
         <section>
             <h4>Use another service to register.</h4>
             <hr />
@@ -84,7 +91,7 @@
             }
         </section>
     </div>
-</div>
+</div>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

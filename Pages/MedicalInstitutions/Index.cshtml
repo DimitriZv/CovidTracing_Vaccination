@@ -65,12 +65,12 @@
                 <td>
                     @if (Model.User.IsInRole("Admin") || Model.User.IsInRole("Government"))
                     {
-                        <a class="text-primary text-decoration-none" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        @*<a class="text-primary text-decoration-none" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>*@
                     }
                     @*@if (Model.User.IsInRole("Patient"))
-                        {
-                            <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
-                        }*@
+        {
+            <b><a asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a></b>
+        }*@
                     <a class="text-primary fw-bold text-decoration-none" asp-page="/BookAppointments/Create" asp-route-Id="@item.ID">Book an appointment</a>
                     | <a class="text-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.ID">Details</a>
                 </td>

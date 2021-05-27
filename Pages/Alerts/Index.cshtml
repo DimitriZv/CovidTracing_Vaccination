@@ -101,6 +101,7 @@
 <table class="font-monospace table table-danger table-striped table-hover col-md-10">
     <thead>
         <tr>
+            <th>LN</th>
             <th>
                 @Html.DisplayNameFor(model => model.Alert[0].Comment)
             </th>
@@ -109,7 +110,7 @@
                     @Html.DisplayNameFor(model => model.Alert[0].DangerousCase.ConfirmDate)
                 </a>
             </th>
-            <th>Visited Places</th>
+            <th>Most Dangerous Places</th>
             <th></th>
         </tr>
     </thead>
@@ -117,6 +118,12 @@
         @foreach (var item in Model.Alert)
         {
         <tr>
+            <td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Government") || User.IsInRole("Medical"))
+                {
+                    @Html.DisplayFor(modelItem => item.DangerousCase.LastName)
+                }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comment)
             </td>

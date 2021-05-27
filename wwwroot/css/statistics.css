@@ -9,3 +9,17 @@
     float: left;
     margin-right: 30px;
 }
+
+#three {
+    float: left;
+    width: 80%;
+}
+
+#four {
+    float: left;
+    margin-right: 30px;
+}
+
+#five {
+    float: right;
+}
